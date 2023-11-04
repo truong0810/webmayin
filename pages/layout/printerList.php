@@ -22,7 +22,7 @@
   <div class="product-list mt-10 w-[1495px] overflow-x-auto flex items-center gap-4 flex-wrap mb-10">
     <div class="product-item border w-[232px] border-graydb rounded-lg">
       <a class="flex items-center justify-center text-center p-[15px_10px_20px_10px]">
-        <img srcset="../image/product/pr1.jpg 2x" class="w-full max-w-[85%] h-full object-cover hover:scale-110 transition-all" />
+        <img srcset="./pages/image/product/pr1.jpg 2x" class="w-full max-w-[85%] h-full object-cover hover:scale-110 transition-all" />
       </a>
       <p class="product-status bg-primary text-center uppercase text-white text-sm font-semibold p-2">
         Còn hàng
@@ -48,7 +48,7 @@
 
     <div class="product-item border w-[232px] border-graydb rounded-lg">
       <a class="flex items-center justify-center text-center p-[15px_10px_20px_10px]">
-        <img srcset="../image/product/pr1.jpg 2x" class="w-full max-w-[85%] h-full object-cover hover:scale-110 transition-all" />
+        <img srcset="./pages/image/product/pr1.jpg 2x" class="w-full max-w-[85%] h-full object-cover hover:scale-110 transition-all" />
       </a>
       <p class="product-status bg-primary text-center uppercase text-white text-sm font-semibold p-2">
         Còn hàng
@@ -74,7 +74,7 @@
 
     <div class="product-item border w-[232px] border-graydb rounded-lg">
       <a class="flex items-center justify-center text-center p-[15px_10px_20px_10px]">
-        <img srcset="../image/product/pr1.jpg 2x" class="w-full max-w-[85%] h-full object-cover hover:scale-110 transition-all" />
+        <img srcset="./pages/image/product/pr1.jpg 2x" class="w-full max-w-[85%] h-full object-cover hover:scale-110 transition-all" />
       </a>
       <p class="product-status bg-primary text-center uppercase text-white text-sm font-semibold p-2">
         Còn hàng
@@ -100,7 +100,7 @@
 
     <div class="product-item border w-[232px] border-graydb rounded-lg">
       <a class="flex items-center justify-center text-center p-[15px_10px_20px_10px]">
-        <img srcset="../image/product/pr1.jpg 2x" class="w-full max-w-[85%] h-full object-cover hover:scale-110 transition-all" />
+        <img srcset="./pages/image/product/pr1.jpg 2x" class="w-full max-w-[85%] h-full object-cover hover:scale-110 transition-all" />
       </a>
       <p class="product-status bg-primary text-center uppercase text-white text-sm font-semibold p-2">
         Còn hàng

@@ -19,25 +19,8 @@
   <div class="container">
     <?php
     include("pages/header.php");
-    ?>
-
-    <main class="px-3 pb-10">
-      <?php
-      // ===========MAIN BANNER=====================
-      include("pages/layout/mainBanner.php");
-      // ===========MAIN SERVICE==================== 
-      include("pages/layout/mainService.php");
-      // ===========PRODUCT FILTER================== 
-      include("pages/layout/printerFilter.php");
-      // ===========PRINTER LIST==================== 
-      include("pages/layout/printerList.php");
-      // ===========LIST BRAND======================
-      include("pages/layout/mainBrand.php");
-      ?>
-    </main>
-
-    <?php
-    include("pages/footer.php")
+    include("pages/main.php");
+    include("pages/footer.php");
     ?>
   </div>
 

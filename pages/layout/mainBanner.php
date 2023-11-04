@@ -212,19 +212,19 @@
       <div class="swiper swiper__banner">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <img src="../image/banner/" />
+            <img src="./pages/image/banner/banner1.png" />
           </div>
           <div class="swiper-slide">
-            <img src="../image/banner/banner2.png" />
+            <img src="./pages/image/banner/banner2.png" />
           </div>
           <div class="swiper-slide">
-            <img src="../image/banner/banner3.png" />
+            <img src="./pages/image/banner/banner3.png" />
           </div>
           <div class="swiper-slide">
-            <img src="../image/banner/banner4.png" />
+            <img src="./pages/image/banner/banner4.png" />
           </div>
           <div class="swiper-slide">
-            <img src="../image/banner/banner5.png" />
+            <img src="./pages/image/banner/banner5.png" />
           </div>
         </div>
         <!-- If we need navigation buttons -->
@@ -243,10 +243,10 @@
       <!-- Sub banner -->
       <div class="flex flex-col items-center justify-center gap-6">
         <div class="w-[357px] h-[215px]">
-          <img src="../image/banner/sub-banner.png" class="w-full h-full object-cover" />
+          <img src="./pages/image/banner/sub-banner.png" class="w-full h-full object-cover" />
         </div>
         <div class="w-[357px] h-[215px]">
-          <img src="../image/banner/sub-banner2.png" class="w-full h-full object-cover" />
+          <img src="./pages/image/banner/sub-banner2.png" class="w-full h-full object-cover" />
         </div>
       </div>
     </div>
