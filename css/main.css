@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Montserrat', 'sans-serif';
+    /* Giúp chữ mỏng hơn */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #ffffff9e;
+  }
+  a {
+    cursor: pointer;
+  }
+
+  .nav-active {
+    color: #38812c !important;
+  }
+  .nav-active::before {
+    content: '';
+    position: absolute;
+    height: 3px;
+    background-color: #38812c;
+    left: 0;
+    bottom: 0;
+    transform: translateY(10px);
+    width: 100%;
+  }
+  .sub-menu {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateX(calc(100% + 1px));
+    background-color: white;
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.15);
+    color: #777;
+    z-index: 9;
+    transition: opacity 0.25s, visibility 0.25s;
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
+  .dropdown-list li:hover > .sub-menu {
+    display: block;
+    visibility: visible;
+    opacity: unset;
+  }
+  .service-banner {
+    position: relative;
+    height: 198px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 21px;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+  }
+  .service-banner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(30, 92, 20, 0.9);
+  }
+  .product-filter .product-filter-active {
+    background-color: #38812c;
+    color: white !important;
+  }
+  .hidden-text {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .swiper.swiper__banner {
+    width: 100%;
+  }
+
+  .heading-pinter {
+    position: relative;
+  }
+  .heading-pinter::after {
+    background-color: #c3c3c3;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    height: 1px;
+    width: 100%;
+    z-index: 0;
+  }
+
+  .pinter-item-link {
+    position: relative;
+    padding-right: 8px;
+    margin-left: 8px;
+  }
+
+  .pinter-item-link:not(:last-child)::after {
+    background-color: #777b94;
+    content: '';
+    height: 18px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 1px;
+  }
+  .brand-item {
+    width: 100%;
+    max-width: 232px;
+  }
+  .swiper__brand .swiper-wrapper {
+    transition-timing-function: linear !important;
+    -webkit-transition-timing-function: linear !important;
+    -o-transition-timing-function: linear !important;
+    transition-timing-function: linear !important;
+  }
+}
+.swiper .swiper-button-prev,
+.swiper .swiper-button-next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  padding: 5px;
+  border: 2px solid white;
+  border-radius: 100rem;
+  color: white;
+}
+.swiper .swiper-button-prev:hover,
+.swiper .swiper-button-next:hover {
+  border-color: #38812c;
+  color: #38812c;
+  transition: all 0.25s ease;
+}
+.swiper .swiper-button-prev::after,
+.swiper .swiper-button-next::after {
+  content: '';
+}
+.header-nav.sticky {
+  position: fixed;
+  top: 0;
+  z-index: 99999;
+  width: 100%;
+}
+
+/* ============DETAILS PRODUCTS================================ */
+.btn-prev,
+.btn-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #757575;
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+.btn-prev {
+  left: 0;
+}
+.btn-next {
+  right: 0;
+}
+.product-details-item:hover .btn-next,
+.product-details-item:hover .btn-prev {
+  display: block;
+  visibility: visible;
+  opacity: unset;
+}
+.details-active {
+  border: 1px solid gray;
+}
+
+/* ========DASHBOARD=========== */
+.hidden-text-oneline {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
