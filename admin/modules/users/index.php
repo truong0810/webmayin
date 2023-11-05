@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- ====================TAILWIND + GG FONT====================== -->
   <?php
-  include("../../../pages/general.php");
+  include("../../pages/general.php");
   ?>
   <script src="../../../handle/script.js"></script>
   <link rel="stylesheet" href="../../css/style.css">

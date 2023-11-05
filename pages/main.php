@@ -5,7 +5,18 @@
   // ===========MAIN SERVICE==================== 
   include("layout/mainService.php");
   // ===========PRODUCT FILTER================== 
-  include("layout/printerFilter.php");
+  if (isset($_GET['quanly'])) {
+    $tam = $_GET['quanly'];
+  } else {
+    $tam = '';
+  }
+  if ($tam == 'sanphambanchay') {
+    include("layout/printerHotSelling.php");
+  } else if ($tam == 'sanphamkhuyenmai') {
+    include("layout/printerSale.php");
+  } else {
+    include("layout/printerFilter.php");
+  }
   // ===========PRINTER LIST==================== 
   include("layout/printerList.php");
   // ===========LIST BRAND======================

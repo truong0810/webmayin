@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- ====================TAILWIND + GG FONT====================== -->
   <?php
-  include("../../../pages/general.php");
+  include("../../pages/general.php");
   ?>
   <script src="../../../handle/script.js"></script>
   <link rel="stylesheet" href="../../css/style.css">
@@ -17,8 +17,8 @@
 <body>
   <div class="container">
     <?php
-    include("../../modules/header.php");
-    ?>
+    include "../../config/image_config.php";
+    include "../header.php"; ?>
 
     <main class="h-[calc(100vh-70px)] pt-[70px]">
       <div class="grid grid-cols-[370px_minmax(0,_1fr)]">

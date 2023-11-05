@@ -2,13 +2,13 @@
   <div class="mt-10 border-b border-graydb">
     <ul class="flex items-center justify-center gap-7">
       <li>
-        <a href="index.php" class="product-filter-active border border-primary px-4 py-3 rounded-full text-base text-primary uppercase font-semibold hover:text-white hover:bg-primary transition-all">Sản phẩm mới</a>
+        <a href="index.php" class="border border-primary px-4 py-3 rounded-full text-base text-primary uppercase font-semibold hover:text-white hover:bg-primary transition-all">Sản phẩm mới</a>
       </li>
       <li>
-        <a href="index.php?quanly=sanphambanchay" class="border border-primary px-4 py-3 rounded-full text-base text-primary uppercase font-semibold hover:text-white hover:bg-primary transition-all">Bán chạy</a>
+        <a href="index.php?quanly=sanphambanchay&id=1" class="product-filter-active border border-primary px-4 py-3 rounded-full text-base text-primary uppercase font-semibold hover:text-white hover:bg-primary transition-all">Bán chạy</a>
       </li>
       <li>
-        <a href="index.php?quanly=sanphamkhuyenmai" class="border border-primary px-4 py-3 rounded-full text-base text-primary uppercase font-semibold hover:text-white hover:bg-primary transition-all">Khuyến mãi sốc</a>
+        <a href="index.php?quanly=sanphamkhuyenmai&id=1" class="border border-primary px-4 py-3 rounded-full text-base text-primary uppercase font-semibold hover:text-white hover:bg-primary transition-all">Khuyến mãi sốc</a>
       </li>
       <li>
         <a href="#" class="border border-primary px-4 py-3 rounded-full text-base text-primary uppercase font-semibold hover:text-white hover:bg-primary transition-all">Xem gần đây</a>

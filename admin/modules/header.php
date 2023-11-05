@@ -2,7 +2,8 @@
   <div class="flex items-center justify-between py-3 px-5">
     <div class="flex items-center gap-10">
       <div class="w-[200px]">
-        <img srcset="../pages/image/banner/logo.png 2x" alt="Logo" class="w-full h-full object-cover" />
+        <img srcset="<?php echo BASE_URL; ?>pages/image/banner/logo.png 2x" alt="Logo" class="w-full h-full object-cover" />
+
       </div>
       <div class="dashboard-input-field flex items-center border border-gray-300 p-2 w-[384px] rounded-lg bg-[#f9fafb] focus:border-red-700 focus-within:border-2 focus-within:border-[#3b82f6] transition-all">
         <input type="text" class="flex-1 outline-none bg-transparent" placeholder="Search" />

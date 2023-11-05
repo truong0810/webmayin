@@ -1,3 +1,6 @@
+<?php
+include("../admin/config/image_config.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,11 +37,30 @@
         ?>
         <!-- =========CONTAINER MAIN========== -->
         <div class="dashboard-container p-5 shadow-md rounded-lg">
-          <div class="dashboard-main text-center flex items-center justify-center h-full">
-            <p class="text-3xl text-black font-bold uppercase">
-              Hiện chưa có bất kỳ thông tin nào!! VUI LÒNG QUAY LẠI SAU
-            </p>
-          </div>
+          <?php
+          if (isset($_GET['action'])) {
+            $tam = $_GET['action'];
+          } else {
+            $tam = '';
+          }
+          if ($tam == 'quanlydanhmucsanpham') {
+            include("modules/categories/index.php");
+          } else if ($tam == 'quanlyhangsanxuat') {
+            include("modules/manufacturers/index.php");
+          } else if ($tam == 'quanlysanpham') {
+            include("modules/products/index.php");
+          } else if ($tam == 'quanlydonhang') {
+            include("modules/orders/index.php");
+          } else if ($tam == 'quanlykhachhang') {
+            include("modules/users/index.php");
+          } else {
+          ?>
+            <div class="dashboard-main text-center flex items-center justify-center h-full">
+              <p class="text-3xl text-black font-bold uppercase">
+                Hiện chưa có bất kỳ thông tin nào!! VUI LÒNG QUAY LẠI SAU
+              </p>
+            </div>
+          <?php } ?>
         </div>
       </div>
     </main>
