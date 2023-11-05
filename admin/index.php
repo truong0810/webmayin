@@ -71,15 +71,10 @@ include("config/config.php");
       </div>
     </main>
   </div>
-  <script>
-    const dashboardUser = document.querySelector('.dashboard-user');
-    const dashboardUserSetting = document.querySelector(
-      '.dashboard-user-setting'
-    );
-    dashboardUser.addEventListener('click', function() {
-      dashboardUserSetting.classList.toggle('hidden-sub');
-    });
-  </script>
+  <!-- Thư viện SweetAlert2 JS -->
+  <script src="./js//jquery-3.7.1.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="./js/custom.js"></script>
 </body>
 
 </html>
