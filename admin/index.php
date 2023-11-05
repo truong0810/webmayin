@@ -1,5 +1,6 @@
 <?php
 include("../admin/config/image_config.php");
+include("config/config.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,14 +13,8 @@ include("../admin/config/image_config.php");
   include("../pages/general.php");
   ?>
   <script src="../handle/script.js"></script>
-  <style>
-    .hidden-sub {
-      visibility: visible;
-      opacity: 0;
-      display: none;
-    }
-  </style>
   <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="./css/style.css">
   <title>Dashboard</title>
 </head>
 
@@ -43,8 +38,19 @@ include("../admin/config/image_config.php");
           } else {
             $tam = '';
           }
+          if (isset($_GET['progess'])) {
+            $progess = $_GET['progess'];
+          } else {
+            $progess = '';
+          }
           if ($tam == 'quanlydanhmucsanpham') {
-            include("modules/categories/index.php");
+            if ($progess == 'add') {
+              include("modules/categories/cate_add.php");
+            } else if ($progess == 'update') {
+              include("modules/categories/cate_update.php");
+            } else {
+              include("modules/categories/index.php");
+            }
           } else if ($tam == 'quanlyhangsanxuat') {
             include("modules/manufacturers/index.php");
           } else if ($tam == 'quanlysanpham') {
