@@ -1,5 +1,12 @@
 <?php
-$SQL = "SELECT * FROM category ORDER BY id ASC";
+if (isset($_GET['search'])) {
+  $search = $_GET['search'];
+  $action = $_GET['action'];
+  $newURL = "index.php?action=$action&search=" . urlencode($search);
+  $SQL = "SELECT * FROM category WHERE name like '%$search%' ORDER BY id ASC";
+} else {
+  $SQL = "SELECT * FROM category ORDER BY id ASC";
+}
 $query_cate = mysqli_query($mysqli, $SQL);
 ?>
 
@@ -10,7 +17,10 @@ $query_cate = mysqli_query($mysqli, $SQL);
   <div class="flex items-center justify-between mt-5">
     <!-- SEARCH PRODUCTS -->
     <div class="dashboard-input-field flex items-center border-2 border-gray-300 p-2 w-[384px] rounded-lg bg-[#f9fafb] focus:border-red-700 focus-within:border-2 focus-within:border-[#3b82f6] transition-all">
-      <input type="text" class="flex-1 text-sm font-medium outline-none bg-transparent" placeholder="Search for categories" />
+      <form action="index.php" class="w-full bg-transparent">
+        <input type="hidden" name="action" value="quanlydanhmucsanpham" class="hidden">
+        <input type="search" class="flex-1 text-sm font-medium outline-none bg-transparent w-full" placeholder="Search for categories" name="search" value="<?php echo $search ?>" autocomplete="off" />
+      </form>
     </div>
     <!-- ADD CATEGORY -->
     <a href="index.php?action=quanlydanhmucsanpham&process=add" class="flex items-center gap-1 bg-bluebtn text-white font-medium p-2 rounded-lg hover:bg-bluehover transition-all">
@@ -62,6 +72,10 @@ $query_cate = mysqli_query($mysqli, $SQL);
             </td>
           </tr>
         <?php } ?>
+
+        <?php
+        mysqli_close($mysqli);
+        ?>
       </tbody>
     </table>
   </div>

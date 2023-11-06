@@ -9,4 +9,5 @@ if (isset($_POST['delete_cate_btn'])) {
   } else {
     echo 500;
   }
+  mysqli_close($mysqli);
 }

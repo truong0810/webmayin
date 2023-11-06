@@ -1,16 +1,24 @@
 <?php
 $page = substr($_SERVER['REQUEST_URI'], strrpos($_SERVER['REQUEST_URI'], "/") + 1);
 $id = '';
+$search = '';
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
 }
+if (isset($_GET['search'])) {
+  $search = $_GET['search'];
+}
+
 $page_active_dashboard = false;
 $page_active_cate = false;
 $page_active_manu = false;
 $page_active_product = false;
 $page_active_order = false;
 $page_active_user = false;
-if ($page == "index.php?action=quanlydanhmucsanpham" || $page == "index.php?action=quanlydanhmucsanpham&process=add" || $page == "index.php?action=quanlydanhmucsanpham&process=update&id=$id") {
+if (
+  $page == "index.php?action=quanlydanhmucsanpham" || $page == "index.php?action=quanlydanhmucsanpham&process=add" || $page == "index.php?action=quanlydanhmucsanpham&process=update&id=$id" ||
+  $page == "index.php?action=quanlydanhmucsanpham&search=$search"
+) {
   $page_active_cate = true;
 } else if ($page == "index.php?action=quanlyhangsanxuat" || $page == "index.php?action=quanlyhangsanxuat&process=add" || $page == "index.php?action=quanlyhangsanxuat&process=update&id=$id") {
   $page_active_manu = true;

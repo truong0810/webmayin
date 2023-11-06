@@ -1,6 +1,6 @@
 <?php
-require("../admin/config/image_config.php");
-require("config/config.php");
+require_once("../admin/config/image_config.php");
+require_once("config/config.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +28,7 @@ require("config/config.php");
       <div class="grid grid-cols-[370px_minmax(0,_1fr)]">
         <!-- ==========SIDE BAR=============== -->
         <?php
-        require("modules/sidebar.php");
+        require_once("modules/sidebar.php");
         ?>
         <!-- =========CONTAINER MAIN========== -->
         <div class="dashboard-container p-5 shadow-md rounded-lg">
@@ -45,20 +45,20 @@ require("config/config.php");
           }
           if ($tam == 'quanlydanhmucsanpham') {
             if ($process == 'add') {
-              require("modules/categories/cate_add.php");
+              require_once("modules/categories/cate_add.php");
             } else if ($process == 'update') {
-              require("modules/categories/cate_update.php");
+              require_once("modules/categories/cate_update.php");
             } else {
-              require("modules/categories/index.php");
+              require_once("modules/categories/index.php");
             }
           } else if ($tam == 'quanlyhangsanxuat') {
-            require("modules/manufacturers/index.php");
+            require_once("modules/manufacturers/index.php");
           } else if ($tam == 'quanlysanpham') {
-            require("modules/products/index.php");
+            require_once("modules/products/index.php");
           } else if ($tam == 'quanlydonhang') {
-            require("modules/orders/index.php");
+            require_once("modules/orders/index.php");
           } else if ($tam == 'quanlykhachhang') {
-            require("modules/users/index.php");
+            require_once("modules/users/index.php");
           } else {
           ?>
             <div class="dashboard-main text-center flex items-center justify-center h-full">
