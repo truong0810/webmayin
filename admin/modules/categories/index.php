@@ -1,11 +1,25 @@
 <?php
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$search = '';
 if (isset($_GET['search'])) {
   $search = $_GET['search'];
+}
+// =============PHAN TRANG ======================
+$sql_so_cate = "SELECT COUNT(*) from category WHERE name like '%$search%'";
+$mang_so_cate = mysqli_query($mysqli, $sql_so_cate);
+$ket_qua_so_cate = mysqli_fetch_array($mang_so_cate);
+$so_cate = $ket_qua_so_cate['COUNT(*)'];
+
+$so_cate_tren_1_trang = 2;
+$so_trang = ceil($so_cate / $so_cate_tren_1_trang);
+$bo_qua = $so_cate_tren_1_trang * ($page - 1);
+// ===============================================
+if (isset($_GET['search'])) {
   $action = $_GET['action'];
   $newURL = "index.php?action=$action&search=" . urlencode($search);
-  $SQL = "SELECT * FROM category WHERE name like '%$search%' ORDER BY id ASC";
+  $SQL = "SELECT * FROM category WHERE name like '%$search%' ORDER BY id ASC LIMIT $so_cate_tren_1_trang OFFSET $bo_qua";
 } else {
-  $SQL = "SELECT * FROM category ORDER BY id ASC";
+  $SQL = "SELECT * FROM category ORDER BY id ASC LIMIT $so_cate_tren_1_trang OFFSET $bo_qua";
 }
 $query_cate = mysqli_query($mysqli, $SQL);
 ?>
@@ -82,8 +96,14 @@ $query_cate = mysqli_query($mysqli, $SQL);
 
   <!-- PAGINATION -->
   <div class="flex items-center justify-end gap-3 mt-10 mr-20">
-    <a href="#" class="pagi-active inline-block text-black font-medium">1</a>
-    <a href="#" class="inline-block text-black font-medium">2</a>
-    <a href="#" class="inline-block text-black font-medium">3</a>
+    <?php
+    for ($i = 1; $i <= $so_trang; $i++) {
+    ?>
+      <!-- <a href="#" class="pagi-active inline-block text-black font-medium">1</a> -->
+      <a href="index.php?action=quanlydanhmucsanpham&page=<?php echo $i ?>&search=<?php echo $search ?>" class="inline-block text-black font-medium <?php echo $page == $i ? 'pagi-active' : '' ?>">
+        <?php echo $i ?>
+      </a>
+    <?php } ?>
   </div>
+
 </div>
