@@ -52,7 +52,13 @@ require_once("config/config.php");
               require_once("modules/categories/index.php");
             }
           } else if ($tam == 'quanlyhangsanxuat') {
-            require_once("modules/manufacturers/index.php");
+            if ($process == 'add') {
+              require_once("modules/manufacturers/manu_add.php");
+            } else if ($process == 'update') {
+              require_once("modules/manufacturers/manu_update.php");
+            } else {
+              require_once("modules/manufacturers/index.php");
+            }
           } else if ($tam == 'quanlysanpham') {
             require_once("modules/products/index.php");
           } else if ($tam == 'quanlydonhang') {

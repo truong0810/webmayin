@@ -46,3 +46,26 @@ $(document).ready(function () {
     });
   });
 });
+
+// IMAGE MANUFACTURERS ADD
+const fileInput = document.getElementById('dropzone-file-manufacturer');
+const selectedImage = document.getElementById('selected-image-manufacturer');
+fileInput.addEventListener('change', function () {
+  // Kiểm tra xem đã chọn tệp hay chưa
+  if (fileInput.files.length > 0) {
+    const file = fileInput.files[0];
+    // Kiểm tra xem tệp được chọn có phải là hình ảnh hay không
+    if (file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        // Đặt src của thẻ <img> bằng dữ liệu ảnh đã đọc
+        selectedImage.src = e.target.result;
+      };
+      // Đọc tệp ảnh
+      reader.readAsDataURL(file);
+    } else {
+      alert('Vui lòng chọn một tệp ảnh hợp lệ.');
+      fileInput.value = ''; // Xóa lựa chọn tệp không hợp lệ
+    }
+  }
+});
