@@ -1,6 +1,6 @@
 <?php
-include("../admin/config/image_config.php");
-include("config/config.php");
+require("../admin/config/image_config.php");
+require("config/config.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +10,7 @@ include("config/config.php");
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- ====================TAILWIND + GG FONT====================== -->
   <?php
-  include("../pages/general.php");
+  require_once("../pages/general.php");
   ?>
   <script src="../handle/script.js"></script>
   <link rel="stylesheet" href="../css/main.css" />
@@ -21,14 +21,14 @@ include("config/config.php");
 <body>
   <div class="container">
     <?php
-    include("modules/header.php");
+    require_once("modules/header.php");
     ?>
 
     <main class="h-[calc(100vh-70px)] pt-[70px]">
       <div class="grid grid-cols-[370px_minmax(0,_1fr)]">
         <!-- ==========SIDE BAR=============== -->
         <?php
-        include("modules/sidebar.php");
+        require("modules/sidebar.php");
         ?>
         <!-- =========CONTAINER MAIN========== -->
         <div class="dashboard-container p-5 shadow-md rounded-lg">
@@ -38,27 +38,27 @@ include("config/config.php");
           } else {
             $tam = '';
           }
-          if (isset($_GET['progess'])) {
-            $progess = $_GET['progess'];
+          if (isset($_GET['process'])) {
+            $process = $_GET['process'];
           } else {
-            $progess = '';
+            $process = '';
           }
           if ($tam == 'quanlydanhmucsanpham') {
-            if ($progess == 'add') {
-              include("modules/categories/cate_add.php");
-            } else if ($progess == 'update') {
-              include("modules/categories/cate_update.php");
+            if ($process == 'add') {
+              require("modules/categories/cate_add.php");
+            } else if ($process == 'update') {
+              require("modules/categories/cate_update.php");
             } else {
-              include("modules/categories/index.php");
+              require("modules/categories/index.php");
             }
           } else if ($tam == 'quanlyhangsanxuat') {
-            include("modules/manufacturers/index.php");
+            require("modules/manufacturers/index.php");
           } else if ($tam == 'quanlysanpham') {
-            include("modules/products/index.php");
+            require("modules/products/index.php");
           } else if ($tam == 'quanlydonhang') {
-            include("modules/orders/index.php");
+            require("modules/orders/index.php");
           } else if ($tam == 'quanlykhachhang') {
-            include("modules/users/index.php");
+            require("modules/users/index.php");
           } else {
           ?>
             <div class="dashboard-main text-center flex items-center justify-center h-full">

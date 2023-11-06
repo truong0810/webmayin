@@ -20,7 +20,7 @@ $(document).ready(function () {
       if (willDelete) {
         $.ajax({
           method: 'POST',
-          url: 'modules/categories/progess_cate_delete.php',
+          url: 'modules/categories/process_cate_delete.php',
           data: {
             id,
             delete_cate_btn: true,

@@ -6,7 +6,7 @@
   <h2 class="text-xl font-bold text-center mt-10 text-secondary uppercase">
     Thông tin danh mục
   </h2>
-  <form action="modules/categories/progess_cate_add.php" method="post">
+  <form action="modules/categories/process_cate_add.php" method="post">
     <div class="mt-5">
       <div class="flex flex-col gap-3">
         <div class="box-field">

@@ -10,15 +10,15 @@ $page_active_manu = false;
 $page_active_product = false;
 $page_active_order = false;
 $page_active_user = false;
-if ($page == "index.php?action=quanlydanhmucsanpham" || $page == "index.php?action=quanlydanhmucsanpham&progess=add" || $page == "index.php?action=quanlydanhmucsanpham&progess=update&id=$id") {
+if ($page == "index.php?action=quanlydanhmucsanpham" || $page == "index.php?action=quanlydanhmucsanpham&process=add" || $page == "index.php?action=quanlydanhmucsanpham&process=update&id=$id") {
   $page_active_cate = true;
-} else if ($page == "index.php?action=quanlyhangsanxuat" || $page == "index.php?action=quanlyhangsanxuat&progess=add" || $page == "index.php?action=quanlyhangsanxuat&progess=update&id=$id") {
+} else if ($page == "index.php?action=quanlyhangsanxuat" || $page == "index.php?action=quanlyhangsanxuat&process=add" || $page == "index.php?action=quanlyhangsanxuat&process=update&id=$id") {
   $page_active_manu = true;
-} else if ($page == "index.php?action=quanlysanpham" || $page == "index.php?action=quanlysanpham&progess=add" || $page == "index.php?action=quanlysanpham&progess=update&id=$id") {
+} else if ($page == "index.php?action=quanlysanpham" || $page == "index.php?action=quanlysanpham&process=add" || $page == "index.php?action=quanlysanpham&process=update&id=$id") {
   $page_active_product = true;
-} else if ($page == "index.php?action=quanlydonhang" || $page == "index.php?action=quanlydonhang&progess=add" || $page == "index.php?action=quanlydonhang&progess=update&id=$id") {
+} else if ($page == "index.php?action=quanlydonhang" || $page == "index.php?action=quanlydonhang&process=add" || $page == "index.php?action=quanlydonhang&process=update&id=$id") {
   $page_active_order = true;
-} else if ($page == "index.php?action=quanlykhachhang" || $page == "index.php?action=quanlykhachhang&progess=add" || $page == "index.php?action=quanlykhachhang&progess=update&id=$id") {
+} else if ($page == "index.php?action=quanlykhachhang" || $page == "index.php?action=quanlykhachhang&process=add" || $page == "index.php?action=quanlykhachhang&process=update&id=$id") {
   $page_active_user = true;
 } else {
   $page_active_dashboard = true;
