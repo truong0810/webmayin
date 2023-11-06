@@ -63,9 +63,6 @@ fileInput.addEventListener('change', function () {
       };
       // Đọc tệp ảnh
       reader.readAsDataURL(file);
-    } else {
-      alert('Vui lòng chọn một tệp ảnh hợp lệ.');
-      fileInput.value = ''; // Xóa lựa chọn tệp không hợp lệ
     }
   }
 });
