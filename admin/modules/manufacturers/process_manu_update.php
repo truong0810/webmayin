@@ -17,6 +17,7 @@ if (isset($_POST['manu_update'])) {
     $SQL = "SELECT * FROM manufacturer WHERE id = $id";
     $QUERY = mysqli_query($mysqli, $SQL);
     while ($row = mysqli_fetch_array($QUERY)) {
+      // Kiểm tra nếu có ảnh cũ, thì xóa ảnh cũ trước khi cập nhật ảnh mới
       if (!empty($row['logo'])) {
         unlink('uploads/' . $row['logo']);
       }
