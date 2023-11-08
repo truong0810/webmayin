@@ -90,8 +90,8 @@ $(document).ready(function () {
   });
 });
 // IMAGE MANUFACTURERS ADD
-const fileInput = document.getElementById('dropzone-file-manufacturer');
-const selectedImage = document.getElementById('selected-image-manufacturer');
+const fileInput = document.getElementById('dropzone-file');
+const selectedImage = document.getElementById('selected-image');
 fileInput.addEventListener('change', function () {
   // Kiểm tra xem đã chọn tệp hay chưa
   if (fileInput.files.length > 0) {

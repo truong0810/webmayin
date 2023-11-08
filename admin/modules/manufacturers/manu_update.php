@@ -18,9 +18,9 @@ $query_cate = mysqli_query($mysqli, $SQL);
         <input type="hidden" name="manu_id" value="<?php echo $row['id'] ?>" class="hidden" />
         <div class="flex flex-col gap-3">
           <div class="flex items-center justify-center w-full">
-            <label for="dropzone-file-manufacturer" class="flex flex-col items-center justify-center w-64 h-64 border-2 border-gray-300 border-dashed cursor-pointer bg-gray-50 hover:bg-gray-100 rounded-full block relative overflow-hidden mt-5">
-              <img id="selected-image-manufacturer" class="absolute inset-0 w-full h-full object-cover" src="modules/manufacturers/uploads/<?= $row['logo'] ?>" />
-              <input id="dropzone-file-manufacturer" type="file" class="hidden" name="manu_logo" value="<?php echo $row['logo'] ?>" />
+            <label for="dropzone-file" class="flex flex-col items-center justify-center w-64 h-64 border-2 border-gray-300 border-dashed cursor-pointer bg-gray-50 hover:bg-gray-100 rounded-full block relative overflow-hidden mt-5">
+              <img id="selected-image" class="absolute inset-0 w-full h-full object-cover" src="modules/manufacturers/uploads/<?= $row['logo'] ?>" />
+              <input id="dropzone-file" type="file" class="hidden" name="manu_logo" value="<?php echo $row['logo'] ?>" />
             </label>
           </div>
           <div class="box-field">

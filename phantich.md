@@ -14,3 +14,50 @@ Khi tìm kiếm VD chữ lazer thì chỉ có 1 bài viết có cái chữ đấ
 
 ? VẤN ĐỀ -> Khi fix được lỗi trên thì có vấn đề mới VD Có 3 bài và số bài trên 1 trang là 1 -> Có 3 trang Khi tìm kiếm VD chữ lazer thì có 2 bài viết tìm kiếm lần đầu sẽ hiển thị đúng số trang là 2 rồi nhưng khi ấn sang page 2 thì nó lại xuất hiện thành 3 page -> Tại sao -> Vì trên thanh địa chỉ truyền không theo cái ta đang tìm kiếm mà khi bấm vào link nó sẽ chỉ truyền mỗi số trang
 => Giải quyết: Khi nhảy sang trang khác cũng phải truyền ta cái đang tìm kiếm
+
+-> VỀ PHẦN PRODUCTS
+1 nhà sản xuất = n sản phẩm
+1 sản phẩm = n nhà sản xuất
+
++) Ảnh image thì sẽ đổi là chọn ảnh từ file
++) Products sẽ có 3 bảng
+-> Làm thế nào để khi thêm các trường dữ liệu nó sẽ tự động update vào các bảng tương ứng thông qua product_id
++) Giờ lưu được nhiều ảnh rồi -> VẤN ĐỀ làm để lưu được cái product_id khi thêm ảnh vào database product
+
+https://dbdiagram.io/d/6549d38e7d8bbd6465a292e3
+//////////////////////
+product_thumbnail
+product_name
+manufacturer_id
+category_id
+product_price
+product_discount
+product_type
+product_papersize
+product_scanspeed
+product_doublescan (Scan hai mặt)
+product_promotion(Khuyến mãi sốc)
+product_selling(Bán chạy)
+product_automatic(Khay nạp giấy tự động (ADF))
+product_communicate
+product_warranty
+product_condition
+product_images (Ở bảng product_images)
+product_desc (ở bảng thông số phụ)
+
+/////THÔNG SỐ PHỤ
+product_species(Chủng loại)
+product_machinetype
+product_activitycycle
+product_opticalresolution
+product_autodocfeeder
+product_scanoptions
+product_scansize
+product_supportweight
+product_autoscanspeed
+product_colorbitdepth
+product_scanfileformat
+product_connect
+product_operatingsystem
+product_printersize
+product_weight

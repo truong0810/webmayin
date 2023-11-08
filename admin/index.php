@@ -60,7 +60,13 @@ require_once("config/config.php");
               require_once("modules/manufacturers/index.php");
             }
           } else if ($tam == 'quanlysanpham') {
-            require_once("modules/products/index.php");
+            if ($process == 'add') {
+              require_once("modules/products/pr_add.php");
+            } else if ($process == 'update') {
+              require_once("modules/products/pr_update.php");
+            } else {
+              require_once("modules/products/index.php");
+            }
           } else if ($tam == 'quanlydonhang') {
             require_once("modules/orders/index.php");
           } else if ($tam == 'quanlykhachhang') {
