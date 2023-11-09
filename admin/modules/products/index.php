@@ -1,8 +1,30 @@
 <?php
-$sql = "SELECT product.*, manufacturer.name 
-FROM product
-LEFT JOIN manufacturer ON product.manufacturer_id = manufacturer.id
-ORDER BY product.id ASC";
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$search = '';
+if (isset($_GET['search'])) {
+  $search = $_GET['search'];
+}
+
+// =============PHAN TRANG ======================
+$sql_so_product = "SELECT COUNT(*) from product WHERE title like '%$search%'";
+$mang_so_product = mysqli_query($mysqli, $sql_so_product);
+$ket_qua_so_product = mysqli_fetch_array($mang_so_product);
+$so_product = $ket_qua_so_product['COUNT(*)'];
+
+$so_product_tren_1_trang = 2;
+$so_trang = ceil($so_product / $so_product_tren_1_trang);
+$bo_qua = $so_product_tren_1_trang * ($page - 1);
+
+
+if (isset($_GET['search'])) {
+  $action = $_GET['action'];
+  $newURL = "index.php?action=$action&search=" . urlencode($search);
+
+  $sql = "SELECT product.*, manufacturer.name FROM product LEFT JOIN manufacturer ON product.manufacturer_id = manufacturer.id WHERE title like '%$search%' ORDER BY product.id ASC LIMIT $so_product_tren_1_trang OFFSET $bo_qua";
+} else {
+  $sql = "SELECT product.*, manufacturer.name FROM product LEFT JOIN manufacturer ON product.manufacturer_id = manufacturer.id ORDER BY product.id ASC LIMIT $so_product_tren_1_trang OFFSET $bo_qua";
+}
+
 $query_product = mysqli_query($mysqli, $sql);
 ?>
 <div class="dashboard-products">
@@ -12,7 +34,11 @@ $query_product = mysqli_query($mysqli, $sql);
   <div class="flex items-center justify-between mt-5">
     <!-- SEARCH PRODUCTS -->
     <div class="dashboard-input-field flex items-center border-2 border-gray-300 p-2 w-[384px] rounded-lg bg-[#f9fafb] focus:border-red-700 focus-within:border-2 focus-within:border-[#3b82f6] transition-all">
-      <input type="text" class="flex-1 text-sm font-medium outline-none bg-transparent" placeholder="Search for products" />
+      <form action="index.php" class="w-full bg-transparent">
+        <input type="hidden" name="action" value="quanlysanpham" class="hidden">
+        <input name="search" type="search" class="flex-1 text-sm font-medium outline-none bg-transparent w-full" placeholder="Search for products" autocomplete="off" value="<?php echo $search ?>" />
+      </form>
+
     </div>
     <!-- ADD PRODUCTS -->
     <a href="index.php?action=quanlysanpham&process=add" class="flex items-center gap-1 bg-bluebtn text-white font-medium p-2 rounded-lg hover:bg-bluehover transition-all">
@@ -80,8 +106,13 @@ $query_product = mysqli_query($mysqli, $sql);
 
   <!-- PAGINATION -->
   <div class="flex items-center justify-end gap-3 mt-10 mr-20">
-    <a href="#" class="pagi-active inline-block text-black font-medium">1</a>
-    <a href="#" class="inline-block text-black font-medium">2</a>
-    <a href="#" class="inline-block text-black font-medium">3</a>
+    <?php
+    for ($i = 1; $i <= $so_trang; $i++) {
+    ?>
+      <!-- <a href="#" class="pagi-active inline-block text-black font-medium">1</a> -->
+      <a href="index.php?action=quanlysanpham&page=<?php echo $i ?>&search=<?php echo $search ?>" class="inline-block text-black font-medium <?php echo $page == $i ? 'pagi-active' : '' ?>">
+        <?php echo $i ?>
+      </a>
+    <?php } ?>
   </div>
 </div>
