@@ -64,6 +64,8 @@ require_once("config/config.php");
               require_once("modules/products/pr_add.php");
             } else if ($process == 'update') {
               require_once("modules/products/pr_update.php");
+            } else if ($process == 'details') {
+              require_once("modules/products/pr_details.php");
             } else {
               require_once("modules/products/index.php");
             }
