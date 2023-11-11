@@ -22,6 +22,13 @@ $query_categories = mysqli_query($mysqli, $sql_categories);
 $sql_manufacturers = "SELECT * FROM manufacturer";
 $query_manufacturers = mysqli_query($mysqli, $sql_manufacturers);
 
+
+// Kiểm tra có ảnh hay không trong product_images
+$sql_images_check = "SELECT COUNT(*) AS image_count FROM product_images WHERE product_id = $product_id";
+$result_images_check = mysqli_query($mysqli, $sql_images_check);
+$row_images_check = mysqli_fetch_assoc($result_images_check);
+$image_count = $row_images_check['image_count'];
+
 ?>
 <div class="dashboard-products">
   <h2 class="text-dark11 text-3xl font-bold uppercase">
@@ -37,13 +44,17 @@ $query_manufacturers = mysqli_query($mysqli, $sql_manufacturers);
       </label>
     </div>
 
-    <div class="flex items-center justify-center gap-5">
-      <?php foreach ($query_product as $each) : ?>
-        <div class="w-[150px] p-1 shadow mt-10">
-          <img src="modules/products/store/<?php echo $each['images'] ?>" class=" w-full h-full object-cover" />
-        </div>
-      <?php endforeach ?>
-    </div>
+    <?php if ($image_count > 0) {
+      // Có ảnh, hiển thị HTML
+    ?>
+      <div class="flex items-center justify-center gap-5">
+        <?php foreach ($query_product as $each) : ?>
+          <div class="w-[150px] p-1 shadow mt-10">
+            <img src="modules/products/store/<?php echo $each['images'] ?>" class="w-full h-full object-cover" />
+          </div>
+        <?php endforeach; ?>
+      </div>
+    <?php  }  ?>
 
     <div class="grid grid-cols-2 gap-5 mt-10">
       <!-- THÔNG SỐ CHÍNH -->
