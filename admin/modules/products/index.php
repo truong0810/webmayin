@@ -11,7 +11,7 @@ $mang_so_product = mysqli_query($mysqli, $sql_so_product);
 $ket_qua_so_product = mysqli_fetch_array($mang_so_product);
 $so_product = $ket_qua_so_product['COUNT(*)'];
 
-$so_product_tren_1_trang = 2;
+$so_product_tren_1_trang = 4;
 $so_trang = ceil($so_product / $so_product_tren_1_trang);
 $bo_qua = $so_product_tren_1_trang * ($page - 1);
 
@@ -84,7 +84,7 @@ $query_product = mysqli_query($mysqli, $sql);
             </td>
             <td class="px-6 py-4">
               <div class="flex items-center gap-2">
-                <a href="#" class="flex items-center justify-center gap-1 bg-bluebtn p-2 rounded-lg text-white hover:bg-bluehover">
+                <a href="?action=quanlysanpham&process=update&id=<?php echo $each['id'] ?>" class="flex items-center justify-center gap-1 bg-bluebtn p-2 rounded-lg text-white hover:bg-bluehover">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                   </svg>

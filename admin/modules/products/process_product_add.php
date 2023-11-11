@@ -1,8 +1,8 @@
 <?php
 include("../../config/config.php");
 $tensanpham = $_POST['product_name'];
-$nhasanxuat = $_POST['manufacturer_id'];
-$danhmuc = $_POST['category_id'];
+$nhasanxuat = intval($_POST['manufacturer_id']);
+$danhmuc = intval($_POST['category_id']);
 $giagoc = floatval($_POST['product_price']);
 $giakhuyenmai = floatval($_POST['product_discount']);
 $loaimay = $_POST['product_type'];

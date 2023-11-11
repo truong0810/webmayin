@@ -134,12 +134,12 @@ $result_manu = mysqli_query($mysqli, $query_manu);
           <label class="text-sm font-semibold cursor-pointer">Khay nạp giấy tự động (ADF)</label>
           <div class="flex items-center gap-5">
             <div class="flex items-center justify-center gap-2">
-              <label>Có</label>
-              <input type="radio" name="product_automatic" value="0" />
+              <label>Có sẵn</label>
+              <input type="radio" name="product_automatic" value="1" />
             </div>
             <div class="flex items-center justify-center gap-2">
-              <label>Không</label>
-              <input type="radio" name="product_automatic" value="1" />
+              <label>Không có sẵn</label>
+              <input type="radio" name="product_automatic" value="0" />
             </div>
           </div>
         </div>

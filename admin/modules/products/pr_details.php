@@ -1,5 +1,12 @@
 <?php
-$product_id = $_GET['id'];
+// $product_id = $_GET['id'];
+
+// $query_cate = "SELECT * FROM category";
+// $result_cate = mysqli_query($mysqli, $query_cate);
+
+// $query_manu = "SELECT * FROM manufacturer";
+// $result_manu = mysqli_query($mysqli, $query_manu);
+
 $sql = "SELECT product.*,category.name AS category_name, manufacturer.name AS manufacturer_name, product_details.*, product_images.*
 FROM product
 LEFT JOIN category ON product.category_id = category.id
@@ -41,13 +48,15 @@ $each = mysqli_fetch_array($query_product);
       </div>
       <div class="box-field flex items-end gap-3">
         <h4 class="text-xl font-semibold capitalize">Giá gốc:</h4>
-        <span class="font-medium text-gray77 text-lg"><?= $each['price'] ?> đ</span>
+        <span class="font-medium text-gray77 text-lg">
+          <?= number_format($each['price'], 0, ',', '.') ?> đ</span>
       </div>
       <div class="box-field flex items-end gap-3">
         <h4 class="text-xl font-semibold capitalize">
           Giá khuyến mãi:
         </h4>
-        <span class="font-medium text-gray77 text-lg"><?= $each['discount'] ?> đ</span>
+        <span class="font-medium text-gray77 text-lg">
+          <?= number_format($each['discount'], 0, ',', '.') ?> đ</span>
       </div>
       <div class="box-field flex items-end gap-3">
         <h4 class="text-xl font-semibold capitalize">Danh mục:</h4>

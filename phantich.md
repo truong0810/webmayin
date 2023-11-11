@@ -24,6 +24,8 @@ Khi tìm kiếm VD chữ lazer thì chỉ có 1 bài viết có cái chữ đấ
 -> Làm thế nào để khi thêm các trường dữ liệu nó sẽ tự động update vào các bảng tương ứng thông qua product_id
 +) Giờ lưu được nhiều ảnh rồi -> VẤN ĐỀ làm để lưu được cái product_id khi thêm ảnh vào database product
 
++) Khi UPDATE 1 sản phẩm nếu mà không có thông tin chi tiết của 1 sản phẩm mà nó tìm qua product_id thì ta sẽ không thể sửa được sản phẩm vì trong product_details sẽ không có product để lúc => if product đang sửa kiểm tra không có product_id nào trùng với sản phẩm đang sửa thì tức là sản phẩm đấy chưa có thông tin chi tiết => Ta sẽ thêm thông tin của product đấy vào product_details => nếu có rồi thì update lại thôi
+
 https://dbdiagram.io/d/6549d38e7d8bbd6465a292e3
 //////////////////////
 product_thumbnail
