@@ -67,6 +67,55 @@ if (isset($_POST['product_update'])) {
       }
     }
 
+    if ($num_of_imgs > 0 && !empty($images['name'][0])) {
+      $new_images_selected = true;
+      // Xóa ảnh cũ nếu tồn tại
+      $sql_product_images = "SELECT * FROM product_images WHERE product_id = $product_id";
+      $query_product_images = mysqli_query($mysqli, $sql_product_images);
+      while ($row = mysqli_fetch_array($query_product_images)) {
+        // Kiểm tra nếu có ảnh cũ, thì xóa ảnh cũ trước khi cập nhật ảnh mới
+        if (!empty($row['images'])) {
+          unlink('store/' . $row['images']);
+          $image_id = $row['id'];
+          $sql_delete_image = "DELETE FROM product_images WHERE id = $image_id";
+          mysqli_query($mysqli, $sql_delete_image);
+        }
+      }
+      // Xử lý và lưu ảnh mới
+      for ($i = 0; $i < $num_of_imgs; $i++) {
+        $image_name = $images['name'][$i];
+        $tmp_name = $images['tmp_name'][$i];
+        $error = $images['error'][$i];
+
+        if ($error === 0) {
+          $img_ex = pathinfo($image_name, PATHINFO_EXTENSION);
+          $img_ex_lc = strtolower($img_ex);
+          $allowed_exs = array('jpg', 'jpeg', 'png', 'gif');
+
+          if (in_array($img_ex_lc, $allowed_exs)) {
+            $new_img_name = time() . '_' . $image_name;
+            $img_upload_path = 'store/' . $new_img_name;
+            move_uploaded_file($tmp_name, $img_upload_path);
+
+            $sql_update_images = "INSERT INTO product_images (product_id, images) VALUES ($product_id, '$new_img_name')";
+            mysqli_query($mysqli, $sql_update_images);
+          }
+        }
+      }
+    }
+    if (!$new_images_selected) {
+      // Nếu không chọn ảnh mới, lấy ảnh trong cơ sở dữ liệu
+      $sql_product_images = "SELECT * FROM product_images WHERE product_id = $product_id";
+      $query_product_images = mysqli_query($mysqli, $sql_product_images);
+      while ($row = mysqli_fetch_array($query_product_images)) {
+        // Sử dụng ảnh từ cơ sở dữ liệu để cập nhật
+        $image_name_update = $row['images'];
+        $image_id = $row['id'];
+        $sql_update_images = "UPDATE product_images SET images='$image_name_update' WHERE id = $image_id";
+        mysqli_query($mysqli, $sql_update_images);
+      }
+    }
+
     // Cập nhật thông tin sản phẩm chính
     $sql_update_product = "UPDATE product SET category_id = $danhmuc, manufacturer_id = $nhasanxuat, title = '$tensanpham', price = $giagoc, discount = $giakhuyenmai, printer_type = '$loaimay', paper_size = '$khogiay', scan_speed = '$tocdoscan', double_sided_scanning = $scanhaimat, automatic_paper_feeder = $khaynaptudong, printer_communicate = '$conggiaotiep', warranty = '$baohanh',
     thumbnail = '$pr_thumbnail', printer_condition = '$tinhtrangmay', hot_selling = $banchay, hot_sale = $khuyenmai WHERE id = $product_id";
