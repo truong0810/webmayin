@@ -1,9 +1,7 @@
 <?php
-$sql_product = "SELECT * FROM product,category WHERE product.category_id = category.id AND product.category_id = '$_GET[id]' ORDER BY product.id ASC";
+$checkID = isset($_GET['id']) ?  $_GET['id'] : '2';
+$sql_product = "SELECT * FROM product,category WHERE product.category_id = category.id AND product.category_id = $checkID ORDER BY product.id ASC";
 $query_product = mysqli_query($mysqli, $sql_product);
-if (!$query_product) {
-  $error = "Sản phẩm này hiện đang hết hàng";
-}
 ?>
 
 <div class="product-list mt-10 w-[1495px] overflow-x-auto flex items-center gap-4 flex-wrap mb-10">
