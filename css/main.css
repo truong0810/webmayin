@@ -158,7 +158,7 @@
 .header-nav.sticky {
   position: fixed;
   top: 0;
-  z-index: 99999;
+  z-index: 88;
   width: 100%;
 }
 
@@ -196,4 +196,74 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
+}
+
+/*  */
+.images {
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: 0.25s;
+}
+
+/* GALLERY */
+.gallery {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.8);
+  transition: 0.5s;
+  z-index: 999;
+}
+.control__close {
+  font-size: 50px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+.control {
+  font-size: 70px;
+  color: rbga(255, 255, 255, 0.8);
+  position: absolute;
+  cursor: pointer;
+}
+.control.prev {
+  left: 5px;
+}
+.control.next {
+  right: 5px;
+}
+.gallery__inner {
+  margin: 0 auto;
+}
+.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+.hide {
+  display: none;
+}
+.overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  background-color: rgba(137, 142, 153, 0.8);
 }
