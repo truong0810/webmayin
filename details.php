@@ -1,3 +1,19 @@
+<?php
+require_once("admin/config/config.php");
+$product_id = $_GET['id'];
+$sql_chitiet = "SELECT product.*,category.name AS category_name, manufacturer.*, product_details.*, product_images.*
+FROM product
+LEFT JOIN category ON product.category_id = category.id
+LEFT JOIN manufacturer ON product.manufacturer_id = manufacturer.id
+LEFT JOIN product_details ON product.id = product_details.product_id
+LEFT JOIN product_images ON product.id = product_images.product_id
+WHERE product.id = $product_id";
+
+$query_product_details = mysqli_query($mysqli, $sql_chitiet);
+$each = mysqli_fetch_array($query_product_details);
+
+$discountPercentage = (($each['price'] - $each['discount']) / $each['price']) * 100;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,21 +22,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- ===================SWIPER CSS======================= -->
   <link rel="stylesheet" href="./css/swiper-bundle.min.css" />
+  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
   <!-- ====================TAILWIND + GG FONT====================== -->
   <?php
-  include("pages/general.php");
+  require_once("pages/general.php");
   ?>
   <script src="./handle/script.js"></script>
   <link rel="stylesheet" href="./css/main.css" />
+  <style>
+
+  </style>
   <title>Document</title>
 </head>
 
-<body class="h-full min-h-[100vh]">
+<body class="w-full h-full min-h-[100vh]">
   <div class="container">
     <?php
-    include("pages/header.php");
+    require_once("pages/header.php");
     ?>
-
     <main class="px-3 pb-10">
       <!-- =========SINGLE PRODUCT HEADER========= -->
       <section class="single-product-header">
@@ -34,14 +53,13 @@
           </nav>
         </div>
       </section>
-
       <!-- =========PRODUCT DETAILS=============== -->
       <section class="product-details">
         <div class="grid grid-cols-[600px_minmax(0,_1fr)] mt-5 gap-5">
           <!-- =====PRODUCT DETAILS IMAGE======= -->
           <div>
             <div class="product-details-item relative w-full h-[600px] border border-gray-400 transition-all">
-              <img src="./pages/image/product/pr1.jpg" alt="" class="w-full h-full object-cover" />
+              <img src="admin/modules/products/store/<?= $each['thumbnail'] ?>" class="w-full h-full object-cover" />
               <div class="btn-prev">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -53,49 +71,41 @@
                 </svg>
               </div>
               <div class="flex items-center justify-center text-gray-700 absolute bottom-0 left-0 p-5">
-                <a href="/details.html" class="p-2 rounded-2xl border border-gray-500 hover:bg-primaryHover hover:text-white transition-all">
+                <a class="p-2 rounded-2xl border border-gray-500 hover:bg-primaryHover hover:text-white transition-all open-images">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
                   </svg>
                 </a>
               </div>
             </div>
+
             <div class="flex items-center gap-3 mt-3">
-              <div class="details-active w-[135px] h-[135px]">
-                <a>
-                  <img src="./pages/image/product/pr1.jpg" class="w-full h-full object-cover" />
-                </a>
-              </div>
-              <div class="w-[135px] h-[135px]">
-                <a>
-                  <img src="./pages/image/product/pr2.jpg" class="w-full h-full object-cover" />
-                </a>
-              </div>
-              <div class="w-[135px] h-[135px]">
-                <a>
-                  <img src="./pages/image/product/pr3.jpg" class="w-full h-full object-cover" />
-                </a>
-              </div>
+              <?php foreach ($query_product_details as $rs) : ?>
+                <div class="details-active w-[135px] h-[135px] wrapper-images">
+                  <img src="admin/modules/products/store/<?= $rs['images'] ?>" class="w-full h-full object-cover cursor-pointer" />
+                </div>
+              <?php endforeach; ?>
             </div>
+
           </div>
           <!-- =====PRODUCT DETAILS INFO================ -->
           <div>
             <!-- TÊN MÁY -->
             <h3 class="text-gray55 text-2xl hidden-text font-semibold">
-              Máy scan không dây HP Enterprise Flow N7000 snw1 (6FW10A)
+              <?= $each['title'] ?>
             </h3>
 
             <!-- GIÁ CẢ -->
             <div class="mt-8">
               <div class="flex items-center gap-3">
-                <span class="text-gray8e line-through text-lg">11.800.000
+                <span class="text-gray8e line-through text-lg"> <?= number_format($each['price'], 0, ',', '.') ?>
                   <span class="inline-block -translate-y-1">₫</span></span>
                 <span class="inline-block bg-[#c40c00] rounded-lg py-[2px] px-[10px] text-white text-md">
-                  -3%</span>
+                  -<?= round(abs($discountPercentage)) ?>%</span>
               </div>
               <div class="mt-2 flex items-end gap-3">
                 <p class="text-secondary text-3xl font-bold">
-                  25.350.000
+                  <?= number_format($each['discount'], 0, ',', '.') ?>
                   <span class="inline-block -translate-y-2">₫</span>
                 </p>
                 <span class="text-[15px] text-[#a4a4a4] font-semibold">(Giá đã có VAT)</span>
@@ -105,61 +115,76 @@
             <div class="flex flex-col gap-2 mt-4">
               <div class="flex items-center gap-2">
                 <span class="text-black font-bold">Loại máy: </span>
-                <span class="text-gray8e">Máy scan ADF</span>
+                <span class="text-gray8e"><?= $each['printer_type'] ?></span>
               </div>
               <div class="flex items-center gap-2">
                 <span class="text-black font-bold">Khổ giấy: </span>
-                <span class="text-gray8e">Tối đa A4</span>
+                <span class="text-gray8e"><?= $each['paper_size'] ?></span>
               </div>
               <div class="flex items-center gap-2">
                 <span class="text-black font-bold">Tốc độ scan: </span>
                 <span class="text-gray8e">
-                  75 trang/phút hoặc 150 ảnh/phút</span>
+                  <?= $each['scan_speed'] ?></span>
               </div>
               <div class="flex items-center gap-2">
                 <span class="text-black font-bold">Scan hai mặt: </span>
-                <span class="text-gray8e">Có</span>
+                <span class="text-gray8e">
+                  <?= $each['double_sided_scanning'] == 0 ? "Không" : "Có" ?>
+                </span>
               </div>
               <div class="flex items-center gap-2">
                 <span class="text-black font-bold">Khay nạp giấy tự động (ADF):
                 </span>
-                <span class="text-gray8e">Có sẵn</span>
+                <span class="text-gray8e">
+                  <?= $each['automatic_paper_feeder'] == 0 ? "Không có sẵn" : "Có sẵn" ?>
+                </span>
               </div>
               <div class="flex items-center gap-2">
                 <span class="text-black font-bold">Cổng giao tiếp: </span>
-                <span class="text-gray8e"> USB/ LAN/ WiFi</span>
+                <span class="text-gray8e">
+                  <?= $each['printer_communicate'] ?>
+                </span>
               </div>
               <div class="flex items-center gap-2">
                 <span class="text-black font-bold">Bảo hành: </span>
-                <span class="text-gray8e">12 tháng tại nơi sử dụng</span>
+                <span class="text-gray8e">
+                  <?= $each['warranty'] ?>
+                </span>
               </div>
               <div class="flex items-center gap-2">
                 <span class="text-black font-bold">Tình trạng máy: </span>
                 <span class="text-gray8e">
-                  100% mới, nguyên tem, nguyên hộp, CO/CQ</span>
+                  <?= $each['printer_condition'] ?>
+                </span>
               </div>
             </div>
 
             <!-- ĐÁNH GIÁ SẢN PHẨM -->
-            <button class="flex items-center gap-4 bg-[#fcb515] text-white p-2 rounded-lg hover:bg-primary transition-all mt-5">
-              <div class="flex flex-col items-center justify-center gap-[6px]">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <div class="flex items-center gap-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
-                  </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
-                  </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
-                  </svg>
-                </div>
+            <div class="flex items-center gap-x-10 mt-5">
+              <div class="w-[150px]">
+                <img src="admin/modules/manufacturers/uploads/<?= $each['logo'] ?>" alt="Logo" class="w-full h-full object-cover">
               </div>
-              Đánh giá sản phẩm
-            </button>
+              <button class="flex items-center gap-4 bg-[#fcb515] text-white p-2 rounded-lg hover:bg-primary transition-all">
+                <div class="flex flex-col items-center justify-center gap-[6px]">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <div class="flex items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                    </svg>
+                  </div>
+                </div>
+                Đánh giá sản phẩm
+              </button>
+            </div>
+
 
             <!-- SẴN HÀNG  -->
             <p class="text-[#31c064] text-base font-semibold flex items-center gap-2 mt-5">
@@ -237,62 +262,14 @@
             <span class="block text-center text-lg py-2 text-white bg-primary w-full uppercase font-bold">Mô Tả</span>
             <div class="text-center">
               <p class="mt-4 text-gray22 text-[19px] capitalize hidden-text font-bold">
-                Máy Scan HP ScanJet Enterprise Flow N7000 snw1 (6FW10A)
+                <?= $each['title'] ?>
               </p>
-              <p class="mt-4 italic">(Bảo hành: 12 tháng)</p>
+              <p class="mt-4 italic">(Bảo hành: <?= $each['warranty'] ?>)</p>
             </div>
 
             <div class="px-4 mt-10 pb-10">
               <p>
-                Nhu cầu scan ngày càng gia tăng trong các doanh nghiệp, văn
-                phòng.&nbsp;<strong>Máy quét HP&nbsp;ScanJet Enterprise Flow N7000 snw1
-                  (6FW10A)</strong>&nbsp;đến từ thương hiệu HP với năng suất công việc cao, chắc
-                chắn sẽ hỗ trợ hết mình cho doanh nghiệp của bạn.
-              </p>
-              <h4 class="text-xl mt-5 font-bold">Hiệu năng mạnh mẽ</h4>
-              <p>
-                Sản phẩm máy quét HP ScanJet Enterprise Flow N7000 snw1
-                (6FW10A) mang một thiết kế gọn gàng, nhẹ nhàng, dễ dàng di
-                chuyển lắp đặt không rườm rà, mất thời gian.
-              </p>
-              <p class="mt-5">
-                Máy scan có tốc độ làm việc nhanh chóng cùng với độ chính xác
-                cao, nhờ phần mềm được cà đặt sẵn cùng khay nạp giấy 80 trang,
-                tiết kiệm thời gian làm việc. HP ScanJet Enterprise Flow N7000
-                có thể xử lý khối lượng lớn công việc với tốc độ cao, lên đến
-                75 trang / phút. Khuyến nghị 7.500 trang / ngày.
-              </p>
-              <p class="mt-5">
-                Với phần mềm HP EveryPage, cho phép máy quét có thể scan đủ
-                loại tài liệu, thậm chí hàng chồng các loại và kích cỡ giấy
-                ảnh media hỗn hợp. Màn hình LCD trực quan, hỗ trợ người dùng
-                thao tác nhanh chóng, tiết kiệm thời gian, đơn giản hóa các
-                công việc phức tạp với HP Scan Premium, cùng tính năng chụp
-                quét hai mặt một.
-              </p>
-
-              <h4 class="text-xl mt-5 font-bold">
-                Chất lượng hình ảnh tuyệt vời
-              </h4>
-              <p>
-                Các sản phẩm scan màu của HP canJet Enterprise Flow N7000 có
-                chất lượng hình ảnh tương đương bản gốc nhờ các tính năng tự
-                động: phơi sáng, tạo ngưỡng, phát hiện màu, làm mịn/xóa nền,
-                phát hiện kích cỡ, làm thẳng nội dung, cải thiện nội dung, tự
-                động nạp, cảm biến phát hiện nhiều nguồn cấp, phát hiện nhiều
-                nguồn cấp nâng cao, tự động định hướng, bỏ nhiều màu, bỏ màu
-                kênh, xóa viền, xóa trang trống, hợp nhất các trang, xóa lỗ,
-                tem kỹ thuật số, chụp siêu dữ liệu.
-              </p>
-              <h4 class="text-xl mt-5 font-bold">
-                Scan qua mạng Lan có dây và không dây WiFi
-              </h4>
-              <p>
-                Máy scan Hp scanjet Enterprise Flow N7000 snw1 6FW10A tích hợp
-                sẵn cổng kết nối qua mạng Lan chuẩn RJ45 và không dây WiFi
-                giúp bạn kết nối thiết bị vào hệ thống mạng Lan của công ty dễ
-                dàng, để mọi người trong văn phòng có thể sử dụng chung thiết
-                bị, tiết kiệm chi phí đầu tư.
+                <?= $each['description'] ?>
               </p>
             </div>
           </div>
@@ -306,14 +283,16 @@
                     <td class="px-6 py-4 font-bold text-gray-900 whitespace-nowrap w-[130px]">
                       Hãng sản xuất
                     </td>
-                    <td class="px-6 py-4">HP</td>
+                    <td class="px-6 py-4">
+                      <?= $each['name'] ?>
+                    </td>
                   </tr>
                   <tr class="bg-white border-b">
                     <td class="px-6 py-4 font-bold text-gray-900 whitespace-nowrap w-[130px]">
                       Chủng loại
                     </td>
                     <td class="px-6 py-4">
-                      HP ScanJet Enterprise Flow N7000 snw1 (6FW10A)
+                      <?= $each['species'] ?>
                     </td>
                   </tr>
                   <tr class="bg-white border-b">
@@ -321,7 +300,7 @@
                       Loại máy
                     </td>
                     <td class="px-6 py-4">
-                      Nạp giấy TỰ ĐỘNG (ADF), quét 2 mặt
+                      <?= $each['machine_type'] ?>
                     </td>
                   </tr>
                   <tr class="bg-white border-b">
@@ -329,51 +308,55 @@
                       Chu kỳ hoạt động (hàng ngày)
                     </td>
                     <td class="px-6 py-4">
-                      Số lượng trang in hàng ngày được khuyến nghị: 7500 trang
+                      <?= $each['activity_cycle'] ?>
                     </td>
                   </tr>
                   <tr class="bg-white border-b">
                     <td class="px-6 py-4 font-bold text-gray-900 w-full max-w-[150px] line-clamp-6">
                       Độ phân giải quang học
                     </td>
-                    <td class="px-6 py-4">Lên tới 600 dpi</td>
+                    <td class="px-6 py-4">
+                      <?= $each['optical_resolution'] ?>
+                    </td>
                   </tr>
                   <tr class="bg-white border-b">
                     <td class="px-6 py-4 font-bold text-gray-900 w-full max-w-[150px] line-clamp-6">
                       Công suất khay nạp tài liệu tự động
                     </td>
-                    <td class="px-6 py-4">Tiêu chuẩn, 80 tờ</td>
+                    <td class="px-6 py-4">
+                      <?= $each['auto_doc_feeder'] ?>
+                    </td>
                   </tr>
                   <tr class="bg-white border-b">
                     <td class="px-6 py-4 font-bold text-gray-900 w-full max-w-[150px] line-clamp-6">
                       Tùy chọn chụp quét (ADF)
                     </td>
-                    <td class="px-6 py-4">Hai mặt một lần</td>
+                    <td class="px-6 py-4">
+                      <?= $each['scan_options'] ?>
+                    </td>
                   </tr>
                   <tr class="bg-white border-b">
                     <td class="px-6 py-4 font-bold text-gray-900 w-full max-w-[150px] line-clamp-6">
                       Kích thước chụp quét (ADF)
                     </td>
                     <td class="px-6 py-4">
-                      <p>Kích thước chụp quét (ADF), tối đa216 x 3100 mm</p>
-                      <br />
-                      <p>
-                        Kích thước chụp quét ADF (tối thiểu)50,8 x 50,8 mm
-                      </p>
+                      <?= $each['scan_size'] ?>
                     </td>
                   </tr>
                   <tr class="bg-white border-b">
                     <td class="px-6 py-4 font-bold text-gray-900 w-full max-w-[150px] line-clamp-6">
                       Trọng lượng giấy ảnh media, được hỗ trợ ADF
                     </td>
-                    <td class="px-6 py-4">43 đến 350 g/m²</td>
+                    <td class="px-6 py-4">
+                      <?= $each['support_weight'] ?>
+                    </td>
                   </tr>
                   <tr class="bg-white border-b">
                     <td class="px-6 py-4 font-bold text-gray-900 w-full max-w-[150px] line-clamp-6">
                       Tốc độ chụp quét của khay nạp tài liệu tự động
                     </td>
                     <td class="px-6 py-4">
-                      Tối đa 75 trang/phút hoặc 150 ảnh/phút
+                      <?= $each['auto_scan_speed'] ?>
                     </td>
                   </tr>
                   <tr class="bg-white border-b">
@@ -381,23 +364,23 @@
                       Chiều sâu bit màu
                     </td>
                     <td class="px-6 py-4">
-                      24 bit (bên ngoài), 48-bit (nội bộ)
+                      <?= $each['color_bit_depth'] ?>
                     </td>
                   </tr>
                   <tr class="bg-white border-b">
                     <td class="px-6 py-4 font-bold text-gray-900 w-full max-w-[150px] line-clamp-6">
                       Bộ nhớ
                     </td>
-                    <td class="px-6 py-4">1GB</td>
+                    <td class="px-6 py-4">
+                      <?= $each['memory'] ?>
+                    </td>
                   </tr>
                   <tr class="bg-white border-b">
                     <td class="px-6 py-4 font-bold text-gray-900 w-full max-w-[150px] line-clamp-6">
                       Định dạng file scan
                     </td>
                     <td class="px-6 py-4">
-                      Đối với văn bản & hình ảnh: PDF, PDF/A, PDF mã hóa,
-                      JPEG, PNG, BMP, TIFF, Word, Excel, PowerPoint, Text
-                      (.txt), Rich Text (.rtf) và PDF có thể tìm kiếm
+                      <?= $each['scan_file_format'] ?>
                     </td>
                   </tr>
                   <tr class="bg-white border-b">
@@ -405,8 +388,7 @@
                       Kết nối
                     </td>
                     <td class="px-6 py-4">
-                      Ethernet 10/100/1000 Base-T, USB 3.0, WiFi 802.11 b/g/n,
-                      WiFi Direct
+                      <?= $each['connect'] ?>
                     </td>
                   </tr>
                   <tr class="bg-white border-b">
@@ -414,11 +396,7 @@
                       Hệ điều hành tương thích
                     </td>
                     <td class="px-6 py-4">
-                      Microsoft® Windows® (10, 8.1, 7, XP: 32-bit và 64-bit,
-                      2008 R2, 2012 R2, 2016, 2019); MacOS (Catalina 10.15,
-                      Mojave 10.14, High Sierra 10.13); Linux (Ubuntu, Fedora,
-                      Debian, RHEL, Linux Mint, Open Suse, Manjaro); Citrix
-                      ready
+                      <?= $each['operating_system'] ?>
                     </td>
                   </tr>
                   <tr class="bg-white border-b">
@@ -426,18 +404,16 @@
                       Kích thước
                     </td>
                     <td class="px-6 py-4">
-                      <p>
-                        Kích thước tối thiểu (R x S x C)310 x 198 x 190 mm
-                      </p>
-                      <br />
-                      <p>Kích thước tối đa (R x S x C)310 x 448 x 319 mm</p>
+                      <?= $each['printer_size'] ?>
                     </td>
                   </tr>
                   <tr class="bg-white border-b">
                     <td class="px-6 py-4 font-bold text-gray-900 w-full max-w-[150px] line-clamp-6">
                       Trọng lượng
                     </td>
-                    <td class="px-6 py-4">4,0 kg</td>
+                    <td class="px-6 py-4">
+                      <?= $each['printer_weight'] ?>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -448,20 +424,95 @@
 
       <!-- ===========LIST BRAND====================== -->
       <?php
-      include("pages/layout/mainBrand.php")
+      require_once("pages/layout/mainBrand.php")
       ?>
     </main>
 
     <?php
-    include("pages/footer.php")
+    require_once("pages/footer.php")
     ?>
   </div>
-
+  <div class="">
+    <div class="gallery">
+      <div class="control__close">
+        <i class="bx bx-x"></i>
+      </div>
+      <div class="gallery__inner">
+        <img src="admin/modules/products/store/<?= $each['thumbnail'] ?>" />
+      </div>
+      <div class="control prev">
+        <i class="bx bxs-chevron-left"></i>
+      </div>
+      <div class="control next">
+        <i class="bx bxs-chevron-right"></i>
+      </div>
+    </div>
+  </div>
   <!--=============== SWIPER JS ===============-->
   <script src="./handle/swiper-bundle.min.js"></script>
   <!--=============== MAIN JS ===============-->
   <script src="./handle/main.js"></script>
-  <script src="./handle/logic.js"></script>
+  <!-- <script src="./handle/logic.js"></script> -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('.wrapper-images img');
+      const btnPrev = document.querySelector('.prev');
+      const btnNext = document.querySelector('.next');
+      const btnClose = document.querySelector('.control__close');
+      const galleryImg = document.querySelector('.gallery__inner img');
+      const gallery = document.querySelector('.gallery');
+      const openImages = document.querySelector('.open-images');
+      let currentIndex = 0;
+
+      function showGallery() {
+        //Prev
+        if (currentIndex === 0) {
+          btnPrev.classList.add('hide');
+        } else {
+          btnPrev.classList.remove('hide');
+        }
+        //Next
+        if (currentIndex === images.length - 1) {
+          btnNext.classList.add('hide');
+        } else {
+          btnNext.classList.remove('hide');
+        }
+        //Hiển thị
+        galleryImg.src = images[currentIndex].src;
+        gallery.classList.add('show');
+      }
+      images.forEach((item, index) => {
+        item.addEventListener('click', function() {
+          currentIndex = index;
+          showGallery();
+        });
+      });
+      btnClose.addEventListener('click', function() {
+        gallery.classList.remove('show');
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.keyCode === 27) {
+          gallery.classList.remove('show');
+        }
+      });
+      btnPrev.addEventListener('click', function() {
+        if (currentIndex > 0) {
+          currentIndex--;
+          showGallery();
+        }
+      });
+      btnNext.addEventListener('click', function() {
+        if (currentIndex < images.length - 1) {
+          currentIndex++;
+          showGallery();
+        }
+      });
+      openImages.addEventListener('click', function() {
+        currentIndex = 0;
+        showGallery();
+      })
+    });
+  </script>
 </body>
 
 </html>
