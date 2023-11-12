@@ -104,15 +104,18 @@ $query_product = mysqli_query($mysqli, $sql);
     </table>
   </div>
 
-  <!-- PAGINATION -->
-  <div class="flex items-center justify-end gap-3 mt-10 mr-20">
-    <?php
-    for ($i = 1; $i <= $so_trang; $i++) {
-    ?>
-      <!-- <a href="#" class="pagi-active inline-block text-black font-medium">1</a> -->
-      <a href="index.php?action=quanlysanpham&page=<?php echo $i ?>&search=<?php echo $search ?>" class="inline-block text-black font-medium <?php echo $page == $i ? 'pagi-active' : '' ?>">
-        <?php echo $i ?>
-      </a>
-    <?php } ?>
-  </div>
+
+  <?php if ($so_product > 0) { ?>
+    <!-- PAGINATION -->
+    <div class="flex items-center justify-end gap-3 mt-10 mr-20">
+      <?php
+      for ($i = 1; $i <= $so_trang; $i++) {
+      ?>
+        <!-- <a href="#" class="pagi-active inline-block text-black font-medium">1</a> -->
+        <a href="index.php?action=quanlysanpham&page=<?php echo $i ?>&search=<?php echo $search ?>" class="inline-block text-black font-medium <?php echo $page == $i ? 'pagi-active' : '' ?>">
+          <?php echo $i ?>
+        </a>
+      <?php } ?>
+    </div>
+  <?php } ?>
 </div>
