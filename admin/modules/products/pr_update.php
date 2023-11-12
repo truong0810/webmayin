@@ -65,7 +65,7 @@ $image_count = $row_images_check['image_count'];
 
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Tên sản phẩm</label>
-          <input name="product_name" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập tên sản phẩm....." value="<?= $each['title'] ?>" />
+          <input autocomplete="off" name="product_name" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập tên sản phẩm....." value="<?= $each['title'] ?>" />
         </div>
 
         <div class="grid grid-cols-2 gap-3">
@@ -94,27 +94,27 @@ $image_count = $row_images_check['image_count'];
 
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Giá gốc</label>
-          <input name="product_price" type="number" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập giá gốc của sản phẩm....." value="<?= $each['price'] ?>" />
+          <input autocomplete="off" name="product_price" type="number" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập giá gốc của sản phẩm....." value="<?= $each['price'] ?>" />
         </div>
 
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Giá khuyến mãi</label>
-          <input name="product_discount" type="number" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập giá khuyến mãi của sản phẩm....." value="<?= $each['discount'] ?>" />
+          <input autocomplete="off" name="product_discount" type="number" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập giá khuyến mãi của sản phẩm....." value="<?= $each['discount'] ?>" />
         </div>
 
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Loại máy</label>
-          <input name="product_type" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập loại của sản phẩm....." value="<?= $each['printer_type'] ?>" />
+          <input autocomplete="off" name="product_type" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập loại của sản phẩm....." value="<?= $each['printer_type'] ?>" />
         </div>
 
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Khổ giấy</label>
-          <input name="product_papersize" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập khổ giấy của sản phẩm....." value="<?= $each['paper_size'] ?>" />
+          <input autocomplete="off" name="product_papersize" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập khổ giấy của sản phẩm....." value="<?= $each['paper_size'] ?>" />
         </div>
 
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Tốc độ scan</label>
-          <input name="product_scanspeed" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập tốc độ scan của sản phẩm....." value="<?= $each['scan_speed'] ?>" />
+          <input autocomplete="off" name="product_scanspeed" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập tốc độ scan của sản phẩm....." value="<?= $each['scan_speed'] ?>" />
         </div>
 
         <div class="box-field">
@@ -175,21 +175,21 @@ $image_count = $row_images_check['image_count'];
 
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Cổng giao tiếp</label>
-          <input name="product_communicate" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập cổng giao tiếp của sản phẩm....." value="<?= $each['printer_communicate'] ?>" />
+          <input autocomplete="off" name="product_communicate" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập cổng giao tiếp của sản phẩm....." value="<?= $each['printer_communicate'] ?>" />
         </div>
 
 
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Bảo hành</label>
-          <input name="product_warranty" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập bảo hành của sản phẩm....." value="<?= $each['warranty'] ?>" />
+          <input autocomplete="off" name="product_warranty" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập bảo hành của sản phẩm....." value="<?= $each['warranty'] ?>" />
         </div>
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Tình trạng máy</label>
-          <input name="product_condition" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập tình trạng máy của sản phẩm....." value="<?= $each['printer_condition'] ?>" />
+          <input autocomplete="off" name="product_condition" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập tình trạng máy của sản phẩm....." value="<?= $each['printer_condition'] ?>" />
         </div>
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Upload multiple image</label>
-          <input name="product_images[]" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" type="file" multiple>
+          <input autocomplete="off" name="product_images[]" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" type="file" multiple>
 
         </div>
         <div class="box-field">
@@ -205,32 +205,32 @@ $image_count = $row_images_check['image_count'];
 
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Chủng loại</label>
-          <input name="product_species" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập chủng loại sản phẩm....." value="<?= $each['species'] ?>" />
+          <input autocomplete="off" name="product_species" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập chủng loại sản phẩm....." value="<?= $each['species'] ?>" />
         </div>
 
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Loại máy</label>
-          <input name="product_machinetype" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập loại máy của sản phẩm....." value="<?= $each['machine_type'] ?>" />
+          <input autocomplete="off" name="product_machinetype" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập loại máy của sản phẩm....." value="<?= $each['machine_type'] ?>" />
         </div>
 
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Chu kỳ hoạt động (hàng ngày)</label>
-          <input name="product_activitycycle" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập chu kỳ hoạt động của sản phẩm....." value="<?= $each['activity_cycle'] ?>" />
+          <input autocomplete="off" name="product_activitycycle" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập chu kỳ hoạt động của sản phẩm....." value="<?= $each['activity_cycle'] ?>" />
         </div>
 
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Độ phân giải quang học</label>
-          <input name="product_opticalresolution" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập độ phân giải quang học của sản phẩm....." value="<?= $each['optical_resolution'] ?>" />
+          <input autocomplete="off" name="product_opticalresolution" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập độ phân giải quang học của sản phẩm....." value="<?= $each['optical_resolution'] ?>" />
         </div>
 
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Công suất khay nạp tài liệu tự động</label>
-          <input name="product_autodocfeeder" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập công suất khay nạp tài liệu tự động của sản phẩm....." value="<?= $each['auto_doc_feeder'] ?>" />
+          <input autocomplete="off" name="product_autodocfeeder" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập công suất khay nạp tài liệu tự động của sản phẩm....." value="<?= $each['auto_doc_feeder'] ?>" />
         </div>
 
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Tùy chọn chụp quét (ADF)</label>
-          <input name="product_scanoptions" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập tùy chọn chụp quét của sản phẩm....." value="<?= $each['scan_options'] ?>" />
+          <input autocomplete="off" name="product_scanoptions" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập tùy chọn chụp quét của sản phẩm....." value="<?= $each['scan_options'] ?>" />
         </div>
 
         <div class="box-field">
@@ -240,22 +240,22 @@ $image_count = $row_images_check['image_count'];
 
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Trọng lượng giấy ảnh media, được hỗ trợ ADF</label>
-          <input name="product_supportweight" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập trọng lượng của sản phẩm....." value="<?= $each['support_weight'] ?>" />
+          <input autocomplete="off" name="product_supportweight" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập trọng lượng của sản phẩm....." value="<?= $each['support_weight'] ?>" />
         </div>
 
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Tốc độ chụp quét của khay nạp tài liệu tự động</label>
-          <input name="product_autoscanspeed" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập tốc độ chụp quét của khay nạp tài liệu tự động của sản phẩm....." value="<?= $each['auto_scan_speed'] ?>" />
+          <input autocomplete="off" name="product_autoscanspeed" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập tốc độ chụp quét của khay nạp tài liệu tự động của sản phẩm....." value="<?= $each['auto_scan_speed'] ?>" />
         </div>
 
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Chiều sâu bit màu</label>
-          <input name="product_colorbitdepth" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập chiều sâu bit màu của sản phẩm....." value="<?= $each['color_bit_depth'] ?>" />
+          <input autocomplete="off" name="product_colorbitdepth" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập chiều sâu bit màu của sản phẩm....." value="<?= $each['color_bit_depth'] ?>" />
         </div>
 
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Bộ nhớ</label>
-          <input name="product_memory" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập bộ nhớ của sản phẩm....." value="<?= $each['memory'] ?>" />
+          <input autocomplete="off" name="product_memory" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập bộ nhớ của sản phẩm....." value="<?= $each['memory'] ?>" />
         </div>
 
         <div class="box-field">
@@ -280,7 +280,7 @@ $image_count = $row_images_check['image_count'];
 
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Trọng lượng</label>
-          <input name="product_weight" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập trọng lượng của sản phẩm....." value="<?= $each['printer_weight'] ?>" />
+          <input autocomplete="off" name="product_weight" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập trọng lượng của sản phẩm....." value="<?= $each['printer_weight'] ?>" />
         </div>
       </div>
     </div>
