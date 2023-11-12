@@ -10,7 +10,7 @@ $mang_so_cate = mysqli_query($mysqli, $sql_so_cate);
 $ket_qua_so_cate = mysqli_fetch_array($mang_so_cate);
 $so_cate = $ket_qua_so_cate['COUNT(*)'];
 
-$so_cate_tren_1_trang = 2;
+$so_cate_tren_1_trang = 5;
 $so_trang = ceil($so_cate / $so_cate_tren_1_trang);
 $bo_qua = $so_cate_tren_1_trang * ($page - 1);
 // ===============================================

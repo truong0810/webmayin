@@ -1,9 +1,9 @@
 <main class="px-3 pb-10">
   <?php
   // ===========MAIN BANNER=====================
-  include("layout/mainBanner.php");
+  require_once("layout/mainBanner.php");
   // ===========MAIN SERVICE==================== 
-  include("layout/mainService.php");
+  require_once("layout/mainService.php");
   // ===========PRODUCT FILTER================== 
   if (isset($_GET['quanly'])) {
     $tam = $_GET['quanly'];
@@ -11,15 +11,15 @@
     $tam = '';
   }
   if ($tam == 'sanphambanchay') {
-    include("layout/printerHotSelling.php");
+    require_once("layout/printerHotSelling.php");
   } else if ($tam == 'sanphamkhuyenmai') {
-    include("layout/printerSale.php");
+    require_once("layout/printerSale.php");
   } else {
-    include("layout/printerFilter.php");
+    require_once("layout/printerFilter.php");
   }
   // ===========PRINTER LIST==================== 
-  include("layout/printerList.php");
+  require_once("layout/printerList.php");
   // ===========LIST BRAND======================
-  include("layout/mainBrand.php");
+  require_once("layout/mainBrand.php");
   ?>
 </main>

@@ -1,3 +1,6 @@
+<?php
+require_once("admin/config/config.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 

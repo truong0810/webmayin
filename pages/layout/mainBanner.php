@@ -1,3 +1,7 @@
+<?php
+$sql_manufacturer = "SELECT * FROM manufacturer ORDER BY id DESC";
+$query_manufacturer = mysqli_query($mysqli, $sql_manufacturer);
+?>
 <section class="main-banner">
   <div class="grid grid-cols-[350px_minmax(0,1fr)] py-5 gap-6">
     <!-- Categories -->
@@ -31,13 +35,9 @@
                 Thương hiệu
               </h3>
               <div class="flex flex-col items-start gap-3 mt-4 text-base capitalize">
-                <a href="#" class="hover:text-black transition-all">Máy in Brother</a>
-                <a href="#" class="hover:text-black transition-all">Máy in Canon</a>
-                <a href="#" class="hover:text-black transition-all">Máy in HP</a>
-                <a href="#" class="hover:text-black transition-all">Máy in Epson</a>
-                <a href="#" class="hover:text-black transition-all">Máy in Ricoh</a>
-                <a href="#" class="hover:text-black transition-all">Máy in Xerox</a>
-                <a href="#" class="hover:text-black transition-all">Máy in Pantum</a>
+                <?php foreach ($query_manufacturer as $each) : ?>
+                  <a href="#" class="hover:text-black transition-all">Máy in <?= $each['name'] ?></a>
+                <?php endforeach ?>
               </div>
             </li>
 
@@ -45,14 +45,7 @@
               <h3 class="text-base font-semibold uppercase text-primary">
                 Khoảng giá
               </h3>
-              <div class="flex flex-col items-start gap-3 mt-4 text-base">
-                <a href="#" class="hover:text-black transition-all">Dưới 3 triệu</a>
-                <a href="#" class="hover:text-black transition-all">3 triệu - 5 triệu</a>
-                <a href="#" class="hover:text-black transition-all">5 triệu - 8 triệu
-                </a>
-                <a href="#" class="hover:text-black transition-all">8 triệu - 12 triệu</a>
-                <a href="#" class="hover:text-black transition-all">Trên 12 triệu</a>
-              </div>
+              <?php require("sidebarPriceRange.php") ?>
             </li>
           </ul>
         </li>
@@ -86,13 +79,9 @@
                 Thương hiệu
               </h3>
               <div class="flex flex-col items-start gap-3 mt-4 text-base capitalize">
-                <a href="#" class="hover:text-black transition-all">Máy in Brother</a>
-                <a href="#" class="hover:text-black transition-all">Máy in Canon</a>
-                <a href="#" class="hover:text-black transition-all">Máy in HP</a>
-                <a href="#" class="hover:text-black transition-all">Máy in Epson</a>
-                <a href="#" class="hover:text-black transition-all">Máy in Ricoh</a>
-                <a href="#" class="hover:text-black transition-all">Máy in Xerox</a>
-                <a href="#" class="hover:text-black transition-all">Máy in Pantum</a>
+                <?php foreach ($query_manufacturer as $each) : ?>
+                  <a href="#" class="hover:text-black transition-all">Máy in <?= $each['name'] ?></a>
+                <?php endforeach ?>
               </div>
             </li>
 
@@ -100,14 +89,7 @@
               <h3 class="text-base font-semibold uppercase text-primary">
                 Khoảng giá
               </h3>
-              <div class="flex flex-col items-start gap-3 mt-4 text-base">
-                <a href="#" class="hover:text-black transition-all">Dưới 3 triệu</a>
-                <a href="#" class="hover:text-black transition-all">3 triệu - 5 triệu</a>
-                <a href="#" class="hover:text-black transition-all">5 triệu - 8 triệu
-                </a>
-                <a href="#" class="hover:text-black transition-all">8 triệu - 12 triệu</a>
-                <a href="#" class="hover:text-black transition-all">Trên 12 triệu</a>
-              </div>
+              <?php require("sidebarPriceRange.php") ?>
             </li>
           </ul>
         </li>
@@ -141,13 +123,9 @@
                 Thương hiệu
               </h3>
               <div class="flex flex-col items-start gap-3 mt-4 text-base capitalize">
-                <a href="#" class="hover:text-black transition-all">Máy in Brother</a>
-                <a href="#" class="hover:text-black transition-all">Máy in Canon</a>
-                <a href="#" class="hover:text-black transition-all">Máy in HP</a>
-                <a href="#" class="hover:text-black transition-all">Máy in Epson</a>
-                <a href="#" class="hover:text-black transition-all">Máy in Ricoh</a>
-                <a href="#" class="hover:text-black transition-all">Máy in Xerox</a>
-                <a href="#" class="hover:text-black transition-all">Máy in Pantum</a>
+                <?php foreach ($query_manufacturer as $each) : ?>
+                  <a href="#" class="hover:text-black transition-all">Máy in <?= $each['name'] ?></a>
+                <?php endforeach ?>
               </div>
             </li>
 
@@ -155,14 +133,7 @@
               <h3 class="text-base font-semibold uppercase text-primary">
                 Khoảng giá
               </h3>
-              <div class="flex flex-col items-start gap-3 mt-4 text-base">
-                <a href="#" class="hover:text-black transition-all">Dưới 3 triệu</a>
-                <a href="#" class="hover:text-black transition-all">3 triệu - 5 triệu</a>
-                <a href="#" class="hover:text-black transition-all">5 triệu - 8 triệu
-                </a>
-                <a href="#" class="hover:text-black transition-all">8 triệu - 12 triệu</a>
-                <a href="#" class="hover:text-black transition-all">Trên 12 triệu</a>
-              </div>
+              <?php require("sidebarPriceRange.php") ?>
             </li>
           </ul>
         </li>
