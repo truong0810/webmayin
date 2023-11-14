@@ -45,11 +45,11 @@ $discountPercentage = (($each['price'] - $each['discount']) / $each['price']) * 
       <section class="single-product-header">
         <div class="mt-7">
           <nav class="flex items-center gap-3 text-sm text-[#1A7FD7]">
-            <a href="details.php">Trang chủ</a>
+            <a href="#">Trang chủ</a>
             <span>/</span>
-            <a href="details.php">Máy Scan</a>
+            <a href="#">Máy Scan</a>
             <span>/</span>
-            <a href="details.php">Máy Scan HP</a>
+            <a href="#">Máy Scan HP</a>
           </nav>
         </div>
       </section>

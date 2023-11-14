@@ -9,14 +9,14 @@ $query_banchay = mysqli_query($mysqli, $sql_banchay);
     <div class="product-list mt-10 w-[1495px] overflow-x-auto flex items-center gap-4 flex-wrap mb-10">
       <?php while ($row = mysqli_fetch_array($query_banchay)) { ?>
         <div class="product-item border w-[232px] border-graydb rounded-lg">
-          <a class="flex items-center justify-center text-center p-[15px_10px_20px_10px]">
+          <a href="details.php?id=<?= $row['id'] ?>" class="flex items-center justify-center text-center p-[15px_10px_20px_10px]">
             <img srcset="admin/modules/products/store/<?= $row['thumbnail'] ?> 2x" class="w-full max-w-[85%] h-full object-cover hover:scale-110 transition-all" />
           </a>
           <p class="product-status bg-primary text-center uppercase text-white text-sm font-semibold p-2">
             Còn hàng
           </p>
           <div class="mt-5 px-1 text-center">
-            <a class="hidden-text text-lg font-semibold hover:text-primary transition-all">
+            <a href="details.php?id=<?= $row['id'] ?>" class="hidden-text text-lg font-semibold hover:text-primary transition-all">
               <?= $row['title'] ?>
             </a>
             <p class="text-gray82 font-medium line-through text-lg mt-3">
