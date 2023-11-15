@@ -267,3 +267,8 @@
   z-index: 99;
   background-color: rgba(137, 142, 153, 0.8);
 }
+.hidden-sub {
+  visibility: visible;
+  opacity: 0;
+  display: none;
+}

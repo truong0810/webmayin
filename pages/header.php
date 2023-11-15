@@ -41,13 +41,37 @@
             <span>Liên hệ</span>
           </a>
 
-          <a class="flex flex-col items-center gap-1 text-xs hover:text-primaryHover font-medium transition-all uppercase" href="signin.php">
-            <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-              </svg>
-            </span>
-            <span>Đăng nhập</span>
-          </a>
+          <?php if (!isset($_SESSION['id_user'])) { ?>
+            <a class="flex flex-col items-center gap-1 text-xs hover:text-primaryHover font-medium transition-all uppercase" href="signin.php">
+              <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                </svg>
+              </span>
+              <span>Đăng nhập</span>
+            </a>
+          <?php } else { ?>
+            <div class="dashboard-user relative w-[32px] h-[32px] cursor-pointer">
+              <img src="<?= $_SESSION['avatar_user'] ?>" alt="Users" class="w-full h-full rounded-full" />
+              <div class="dashboard-user-setting absolute right-0 top-0 translate-y-8 bg-white shadow-md rounded-lg overflow-hidden hidden-sub z-[999999]">
+                <div class="border-b-2 border-gray-300 p-3">
+                  <p class="text-[#111827] capitalize hidden-text-oneline">
+                    <?= $_SESSION['name_user'] ?>
+                  </p>
+                  <p class="font-semibold text-black hidden-text-oneline">
+                    <?= $_SESSION['email_user'] ?>
+                  </p>
+                </div>
+                <div class="flex flex-col items-start">
+                  <a href="#" class="hover:bg-gray-200 w-full transition-all">
+                    <span class="px-3 py-2 inline-block">Settings</span>
+                  </a>
+                  <a href="signout.php" class="hover:bg-gray-200 w-full transition-all">
+                    <span class="px-3 py-2 inline-block">Sign out</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          <?php } ?>
         </div>
       </div>
     </div>

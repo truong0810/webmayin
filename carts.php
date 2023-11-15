@@ -1,3 +1,37 @@
+<?php
+require_once("admin/config/config.php");
+session_start();
+//INCREMENT QUANTITY
+//DECREMENT QUANTITY 
+//DELETE PRODUCT
+//ADD PRODUCT VAO GIO HANG
+if (isset($_POST['add_order'])) {
+  $product_id = $_GET['id'];
+  $soluong = 1;
+  $sql = "SELECT * FROM product WHERE id = $product_id LIMIT 1";
+  $query = mysqli_query($mysqli, $sql);
+  $row = mysqli_fetch_array($query);
+  if ($row) {
+    $new_product = array(array('product_name' => $row['title'], 'id' => $product_id, 'quantity' => $soluong, 'price' => $row['discount'], 'image' => $row['thumbnail']));
+
+    //Check if sesssion cart 
+    if (isset($_SESSION['cart'])) {
+      $found = false;
+      foreach ($_SESSION['cart'] as $cart_item) {
+        if ($cart_item['id'] == $product_id) {
+          $product[] = array(array('product_name' => $row['title'], 'id' => $product_id, 'quantity' => $soluong, 'price' => $row['discount'], 'image' => $row['thumbnail']));
+          $found = true;
+        } else {
+          $product[] = array(array('product_name' => $row['title'], 'id' => $product_id, 'quantity' => $soluong, 'price' => $row['discount'], 'image' => $row['thumbnail']));
+        }
+      }
+    } else {
+      $_SESSION['cart'] = $new_product;
+    }
+    print_r($_SESSION['cart']);
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +42,7 @@
   <link rel="stylesheet" href="./css/swiper-bundle.min.css" />
   <!-- ====================TAILWIND + GG FONT====================== -->
   <?php
-  include("pages/general.php");
+  require_once("pages/general.php");
   ?>
   <script src="./handle/script.js"></script>
   <link rel="stylesheet" href="./css/main.css" />
@@ -18,7 +52,7 @@
 <body class="h-full min-h-[100vh]">
   <div class="container">
     <?php
-    include("pages/header.php");
+    require_once("pages/header.php");
     ?>
 
     <main class="px-3 pb-10 mt-10">
@@ -165,7 +199,7 @@
     </main>
 
     <?php
-    include("pages/footer.php");
+    require_once("pages/footer.php");
     ?>
   </div>
 

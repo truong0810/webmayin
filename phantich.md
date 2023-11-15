@@ -31,6 +31,9 @@ Khi tìm kiếm VD chữ lazer thì chỉ có 1 bài viết có cái chữ đấ
 +) Trong Phần categoryPrinterList đang hardcode
 $checkID = isset($\_GET['id']) ? $\_GET['id'] : '2' -> Nếu ko có id thì lấy category có id là 2 trong bảng để hiển thị ra nếu mà xoá nhầm category là tham số mặc định đấy thì nó sẽ lỗi ta lại phải vào để sửa thành category có id khác
 
++) Header bản chất chèn thêm điều hướng ở đầu trang nếu có header ở dưới sẽ bị ghi đè lên bằng cái ở dưới và điều hướng cái ở dưới -> Lỗi
+
+' or 1=1 limit 1#
 https://dbdiagram.io/d/6549d38e7d8bbd6465a292e3
 //////////////////////
 product_thumbnail
