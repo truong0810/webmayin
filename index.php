@@ -12,7 +12,7 @@ session_start();
   <link rel="stylesheet" href="./css/swiper-bundle.min.css" />
   <!-- ====================TAILWIND + GG FONT====================== -->
   <?php
-  include("pages/general.php");
+  require_once("pages/general.php");
   ?>
   <script src="./handle/script.js"></script>
   <link rel="stylesheet" href="./css/main.css" />
@@ -22,9 +22,9 @@ session_start();
 <body class="h-full min-h-[100vh]">
   <div class="container">
     <?php
-    include("pages/header.php");
-    include("pages/main.php");
-    include("pages/footer.php");
+    require_once("pages/header.php");
+    require_once("pages/main.php");
+    require_once("pages/footer.php");
     ?>
   </div>
 

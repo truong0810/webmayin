@@ -1,5 +1,5 @@
 <?php
-// $product_id = $_GET['id'];
+$product_id = $_GET['id'];
 
 // $query_cate = "SELECT * FROM category";
 // $result_cate = mysqli_query($mysqli, $query_cate);

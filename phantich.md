@@ -34,6 +34,17 @@ $checkID = isset($\_GET['id']) ? $\_GET['id'] : '2' -> Nếu ko có id thì lấ
 +) Header bản chất chèn thêm điều hướng ở đầu trang nếu có header ở dưới sẽ bị ghi đè lên bằng cái ở dưới và điều hướng cái ở dưới -> Lỗi
 
 ' or 1=1 limit 1#
+
++)PHÂN TÍCH GIỎ HÀNG
+Thêm máy in vào giỏ hàng
+TH1: Khi chưa có gì trong giỏ hàng
+Thêm máy in vào
+Khi thêm máy in vào giỏ hàng lần nữa
+TH2: Khi có gì đó trong giỏ hàng rồi
+Tìm trong giỏ hàng có máy in chưa.Nếu có rồi Tăng số lượng máy in lên 1
+Khi thêm máy in loại khác vào giỏ hàng
+Tìm trong giỏ hàng có máy in loại khác chưa.Nếu có rồi Tăng số lượng máy in lên 1.Nếu chưa thì thêm vào
+
 https://dbdiagram.io/d/6549d38e7d8bbd6465a292e3
 //////////////////////
 product_thumbnail

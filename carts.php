@@ -1,36 +1,6 @@
 <?php
-require_once("admin/config/config.php");
 session_start();
-//INCREMENT QUANTITY
-//DECREMENT QUANTITY 
-//DELETE PRODUCT
-//ADD PRODUCT VAO GIO HANG
-if (isset($_POST['add_order'])) {
-  $product_id = $_GET['id'];
-  $soluong = 1;
-  $sql = "SELECT * FROM product WHERE id = $product_id LIMIT 1";
-  $query = mysqli_query($mysqli, $sql);
-  $row = mysqli_fetch_array($query);
-  if ($row) {
-    $new_product = array(array('product_name' => $row['title'], 'id' => $product_id, 'quantity' => $soluong, 'price' => $row['discount'], 'image' => $row['thumbnail']));
-
-    //Check if sesssion cart 
-    if (isset($_SESSION['cart'])) {
-      $found = false;
-      foreach ($_SESSION['cart'] as $cart_item) {
-        if ($cart_item['id'] == $product_id) {
-          $product[] = array(array('product_name' => $row['title'], 'id' => $product_id, 'quantity' => $soluong, 'price' => $row['discount'], 'image' => $row['thumbnail']));
-          $found = true;
-        } else {
-          $product[] = array(array('product_name' => $row['title'], 'id' => $product_id, 'quantity' => $soluong, 'price' => $row['discount'], 'image' => $row['thumbnail']));
-        }
-      }
-    } else {
-      $_SESSION['cart'] = $new_product;
-    }
-    print_r($_SESSION['cart']);
-  }
-}
+$cart = $_SESSION['cart'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -99,75 +69,42 @@ if (isset($_POST['add_order'])) {
                 </tr>
               </thead>
               <tbody>
-                <tr class="w-full">
-                  <td class="flex items-center gap-10 border-b border-gray-500 w-full pb-3">
-                    <div class="w-[70px] h-[70px] flex items-center shrink-0">
-                      <a href="" class="text-secondary">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
-                        </svg>
-                      </a>
-                      <img src="./pages/image/product/pr1.jpg" class="w-full h-full object-cover" />
-                    </div>
-                    <div class="flex flex-col items-start">
-                      <h2 class="text-sm font-semibold uppercase hidden-text">
-                        MÁY IN MÀU ĐA NĂNG CANON IMAGECLASS MF655CDW
-                      </h2>
-                      <p class="text-secondary font-bold mt-2">
-                        11.400.000 ₫
-                      </p>
-                      <div class="p-1 border border-primary text-primary rounded-lg mt-2">
-                        <button class="px-4 py-1 border border-primary rounded-full hover:bg-primary hover:text-white transition-all">
-                          -
-                        </button>
-                        <span class="text-xl px-4 font-bold">1</span>
-                        <button class="px-4 py-1 border border-primary rounded-full hover:bg-primary hover:text-white transition-all">
-                          +
-                        </button>
+                <?php foreach ($cart as $id => $each) : ?>
+                  <tr class="w-full">
+                    <td class="flex items-center gap-10 border-b border-gray-500 w-full pb-3">
+                      <div class="w-[70px] h-[70px] flex items-center shrink-0">
+                        <a href="" class="text-secondary">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                          </svg>
+                        </a>
+                        <img src="admin/modules/products/store/<?= $each['thumbnail'] ?>" class="w-full h-full object-cover" />
                       </div>
-                    </div>
-                  </td>
-                  <td class="border-b border-gray-500 w-full pb-3">
-                    <p class="text-[#c40c00] font-bold text-right">
-                      11.400.000 ₫
-                    </p>
-                  </td>
-                </tr>
-                <tr class="w-full">
-                  <td class="flex items-center gap-10 border-b border-gray-500 w-full pb-3">
-                    <div class="w-[70px] h-[70px] flex items-center shrink-0">
-                      <a href="" class="text-secondary">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
-                        </svg>
-                      </a>
-                      <img src="./pages/image/product/pr2.jpg" class="w-full h-full object-cover" />
-                    </div>
-                    <div class="flex flex-col items-start">
-                      <h2 class="text-sm font-semibold uppercase hidden-text">
-                        MÁY SCAN KHÔNG DÂY HP ENTERPRISE FLOW N7000 SNW1
-                        (6FW10A)
-                      </h2>
-                      <p class="text-secondary font-bold mt-2">
-                        25.350.000 ₫
-                      </p>
-                      <div class="p-1 border border-primary text-primary rounded-lg mt-2">
-                        <button class="px-4 py-1 border border-primary rounded-full hover:bg-primary hover:text-white transition-all">
-                          -
-                        </button>
-                        <span class="text-xl px-4 font-bold">1</span>
-                        <button class="px-4 py-1 border border-primary rounded-full hover:bg-primary hover:text-white transition-all">
-                          +
-                        </button>
+                      <div class="flex flex-col items-start">
+                        <h2 class="text-sm font-semibold uppercase hidden-text">
+                          <?= $each['name'] ?>
+                        </h2>
+                        <p class="text-secondary font-bold mt-2">
+                          <?= number_format($each['price'], 0, ',', '.') ?> ₫
+                        </p>
+                        <div class="p-1 border border-primary text-primary rounded-lg mt-2">
+                          <a href="update_quantity_in_cart.php?id=<?= $id ?>&type=decrement" class="px-4 py-1 border border-primary rounded-full hover:bg-primary hover:text-white transition-all">
+                            -
+                          </a>
+                          <span class="text-xl px-4 font-bold"><?= $each['quantity'] ?></span>
+                          <a href="update_quantity_in_cart.php?id=<?= $id ?>&type=increment" class="px-4 py-1 border border-primary rounded-full hover:bg-primary hover:text-white transition-all">
+                            +
+                          </a>
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                  <td class="border-b border-gray-500 w-full pb-3">
-                    <p class="text-[#c40c00] font-bold text-right">
-                      25.350.000 ₫
-                    </p>
-                  </td>
-                </tr>
+                    </td>
+                    <td class="border-b border-gray-500 w-full pb-3">
+                      <p class="text-[#c40c00] font-bold text-right">
+                        <?= number_format($each['price'] * $each['quantity'], 0, ',', '.') ?> ₫
+                      </p>
+                    </td>
+                  </tr>
+                <?php endforeach ?>
               </tbody>
             </table>
 
@@ -211,4 +148,3 @@ if (isset($_POST['add_order'])) {
 </body>
 
 </html>
-<!-- https://flowbite.com/application-ui/demo/e-commerce/products/ -->
