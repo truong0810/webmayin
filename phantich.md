@@ -45,6 +45,17 @@ Tìm trong giỏ hàng có máy in chưa.Nếu có rồi Tăng số lượng má
 Khi thêm máy in loại khác vào giỏ hàng
 Tìm trong giỏ hàng có máy in loại khác chưa.Nếu có rồi Tăng số lượng máy in lên 1.Nếu chưa thì thêm vào
 
+ORDER
+Insert vào bao nhiêu bảng mỗi bảng có bao nhiêu bản ghi? đó là những bảng nào? Cụ thể mỗi bảng sẽ có bao nhiêu bản ghi?
+order_details
+order_id: 1 ============ 1
+product_id: 1 ========== 2
+quantity: 3 ============ 1
+Và khi vào nút đặt hàng
+Cách 1: Select max id từ orders nếu người dùng cùng đặt hàng cùng 1 lúc, tức là insert cùng lúc => max id chưa chắc là max id của thằng vừa insert vào có thể là thằng b cùng lúc đặt hàng với a => Ta có thể select max và where theo user_id vừa đặt
+===>> VALIDATION
++) Khi ms đầu vào giỏ hàng thì sẽ lỗi nếu trong giỏ hàng chưa có sản phẩm
++) Khi click vào giỏ hàng nếu sửa id trên url thì sẽ bị lỗi
 https://dbdiagram.io/d/6549d38e7d8bbd6465a292e3
 //////////////////////
 product_thumbnail
