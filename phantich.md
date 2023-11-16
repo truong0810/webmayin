@@ -53,6 +53,7 @@ product_id: 1 ========== 2
 quantity: 3 ============ 1
 Và khi vào nút đặt hàng
 Cách 1: Select max id từ orders nếu người dùng cùng đặt hàng cùng 1 lúc, tức là insert cùng lúc => max id chưa chắc là max id của thằng vừa insert vào có thể là thằng b cùng lúc đặt hàng với a => Ta có thể select max và where theo user_id vừa đặt
+
 ===>> VALIDATION
 +) Khi ms đầu vào giỏ hàng thì sẽ lỗi nếu trong giỏ hàng chưa có sản phẩm
 +) Khi click vào giỏ hàng nếu sửa id trên url thì sẽ bị lỗi
