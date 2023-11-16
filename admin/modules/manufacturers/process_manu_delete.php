@@ -1,5 +1,5 @@
 <?php
-include("../../config/config.php");
+require_once("../../config/config.php");
 
 if (isset($_POST['delete_manu_btn'])) {
     $manu_id = mysqli_real_escape_string($mysqli, $_POST['id']);

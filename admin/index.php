@@ -1,4 +1,6 @@
 <?php
+session_start();
+require 'check_admin_login.php';
 require_once("../admin/config/image_config.php");
 require_once("config/config.php");
 ?>

@@ -31,21 +31,20 @@
         </span>
       </div>
       <div class="dashboard-user relative w-[32px] h-[32px] cursor-pointer">
-        <img src="https://source.unsplash.com/random" alt="Users" class="w-full h-full rounded-full" />
+        <img src="<?= $_SESSION['avatar_admin'] ?>" alt="Admins" class="w-full h-full rounded-full" />
         <div class="dashboard-user-setting absolute right-0 top-0 translate-y-8 bg-white shadow-md rounded-lg overflow-hidden hidden-sub z-[999999]">
           <div class="border-b-2 border-gray-300 p-3">
             <p class="text-[#111827] capitalize hidden-text-oneline">
-              Neil Sims
+              <?= $_SESSION['name_admin'] ?>
             </p>
             <p class="font-semibold text-black hidden-text-oneline">
-              neil.sims@gmail.com
+              <?= $_SESSION['email'] ?>
             </p>
           </div>
           <div class="flex flex-col items-start">
             <a href="#" class="hover:bg-gray-200 w-full transition-all">
               <span class="px-3 py-2 inline-block">Settings</span>
             </a>
-            <a href="#" class="hover:bg-gray-200 w-full transition-all"><span class="px-3 py-2 inline-block"> Earnings </span></a>
             <a href="#" class="hover:bg-gray-200 w-full transition-all">
               <span class="px-3 py-2 inline-block">Sign out</span>
             </a>

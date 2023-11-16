@@ -1,4 +1,5 @@
 <?php
+require 'check_admin_login.php';
 $query_cate = "SELECT * FROM category";
 $result_cate = mysqli_query($mysqli, $query_cate);
 

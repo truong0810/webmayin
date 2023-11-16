@@ -1,6 +1,6 @@
 <?php
-include("../../config/config.php");
-
+require '../../check_admin_login.php';
+require_once("../../config/config.php");
 if (isset($_POST['delete_product_button'])) {
   $product_id = mysqli_real_escape_string($mysqli, $_POST['id']);
 

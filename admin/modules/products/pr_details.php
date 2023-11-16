@@ -1,4 +1,5 @@
 <?php
+require 'check_admin_login.php';
 $product_id = $_GET['id'];
 
 // $query_cate = "SELECT * FROM category";

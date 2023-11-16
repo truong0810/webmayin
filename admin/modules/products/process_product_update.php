@@ -1,6 +1,6 @@
 <?php
-include("../../config/config.php");
-
+require '../../check_admin_login.php';
+require_once("../../config/config.php");
 $product_id = $_POST['pr_id'];
 
 $tensanpham = $_POST['product_name'];

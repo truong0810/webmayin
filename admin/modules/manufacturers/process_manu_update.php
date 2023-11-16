@@ -1,5 +1,6 @@
 <?php
-include("../../config/config.php");
+require_once("../../config/config.php");
+
 $id = $_POST['manu_id'];
 $tennhasanxuat = $_POST['manu_name'];
 $sodienthoai = $_POST['manu_phone'];
