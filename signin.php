@@ -96,7 +96,7 @@ if (isset($_SESSION['id_user'])) {
           <form class="space-y-4" action="process_signin.php" method="post">
             <div>
               <label for="email" class="block mb-2 text-sm font-medium text-gray-900"> Email</label>
-              <input type="email" name="email" id="email" autocomplete="off" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="name@company.com" />
+              <input type="email" name="email" id="email" autocomplete="off" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="name@gmail.com" />
             </div>
             <div class="password-toggle">
               <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
