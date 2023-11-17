@@ -72,7 +72,11 @@ require_once("config/config.php");
               require_once("modules/products/index.php");
             }
           } else if ($tam == 'quanlydonhang') {
-            require_once("modules/orders/index.php");
+            if ($process == 'details') {
+              require_once("modules/orders/od_details.php");
+            } else {
+              require_once("modules/orders/index.php");
+            }
           } else if ($tam == 'quanlykhachhang') {
             require_once("modules/users/index.php");
           } else {
