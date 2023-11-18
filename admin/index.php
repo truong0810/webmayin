@@ -21,11 +21,6 @@ require_once("config/config.php");
 </head>
 
 <body>
-   <?php
-   // $arrX = array_keys($arr);
-   // $arrY = array_values($arr);
-   ?>
-
    <div class="container">
       <?php
       require_once("modules/header.php");
@@ -90,7 +85,6 @@ require_once("config/config.php");
                      <figure class="highcharts-figure">
                         <div id="container"></div>
                      </figure>
-
                   </div>
                <?php } ?>
             </div>
@@ -101,6 +95,7 @@ require_once("config/config.php");
    <script src="./js//jquery-3.7.1.min.js"></script>
    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
    <script src="./js/custom.js"></script>
+   <!-- Thư viện làm biểu đồ thống kê -->
    <script src="https://code.highcharts.com/highcharts.js"></script>
    <script src="https://code.highcharts.com/modules/series-label.js"></script>
    <script src="https://code.highcharts.com/modules/exporting.js"></script>

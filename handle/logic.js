@@ -13,6 +13,6 @@ window.addEventListener('scroll', (e) => {
 });
 const dashboardUser = document.querySelector('.dashboard-user');
 const dashboardUserSetting = document.querySelector('.dashboard-user-setting');
-dashboardUser.addEventListener('click', function () {
+dashboardUser?.addEventListener('click', function () {
   dashboardUserSetting.classList.toggle('hidden-sub');
 });
