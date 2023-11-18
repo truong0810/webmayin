@@ -10,7 +10,7 @@ $query_cate = mysqli_query($mysqli, $SQL);
   <h2 class="text-xl font-bold text-center mt-10 text-secondary uppercase">
     Thông tin danh mục
   </h2>
-  <form action="modules/categories/process_cate_update.php" method="post">
+  <form id="form-category-update" action="modules/categories/process_cate_update.php" method="post">
     <div class="mt-5">
       <?php
       while ($row = mysqli_fetch_array($query_cate)) {

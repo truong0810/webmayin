@@ -94,20 +94,25 @@ require_once("config/config.php");
    <!-- Thư viện SweetAlert2 JS -->
    <script src="./js//jquery-3.7.1.min.js"></script>
    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-   <script src="./js/custom.js"></script>
+   <!-- Thư viện validate -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js" integrity="sha512-WMEKGZ7L5LWgaPeJtw9MBM4i5w5OSBlSjTjCtSnvFJGSVD26gE5+Td12qN5pvWXhuWaWcVwF++F7aqu9cvqP0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/additional-methods.min.js" integrity="sha512-TiQST7x/0aMjgVTcep29gi+q5Lk5gVTUPE9XgN0g96rwtjEjLpod4mlBRKWHeBcvGBAEvJBmfDqh2hfMMmg+5A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
    <!-- Thư viện làm biểu đồ thống kê -->
    <script src="https://code.highcharts.com/highcharts.js"></script>
    <script src="https://code.highcharts.com/modules/series-label.js"></script>
    <script src="https://code.highcharts.com/modules/exporting.js"></script>
    <script src="https://code.highcharts.com/modules/export-data.js"></script>
    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+   <script src="./js/custom.js"></script>
+   <script src="./js/validate.js"></script>
    <script type="text/javascript">
       $(document).ready(function() {
+         const day = 7;
          $.ajax({
             url: 'get_revenue.php',
             dataType: 'json',
             data: {
-               days: 30
+               days: day
             }
          }).done(function(res) {
             const arrX = Object.keys(res);
@@ -118,7 +123,7 @@ require_once("config/config.php");
                   type: 'spline'
                },
                title: {
-                  text: 'Thống kê doanh thu 30 ngày gần nhất'
+                  text: `Thống kê doanh thu ${day} ngày gần nhất`
                },
                xAxis: {
                   categories: arrX
