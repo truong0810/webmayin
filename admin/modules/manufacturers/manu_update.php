@@ -10,12 +10,12 @@ $query_cate = mysqli_query($mysqli, $SQL);
   <h2 class="text-xl font-bold text-center mt-10 text-secondary uppercase">
     Thông tin nhà sản xuất
   </h2>
-  <form action="modules/manufacturers/process_manu_update.php" method="post" enctype="multipart/form-data">
+  <form id="form-manufacturer-update" action="modules/manufacturers/process_manu_update.php" method="post" enctype="multipart/form-data">
     <?php
     while ($row = mysqli_fetch_array($query_cate)) {
     ?>
       <div class="mt-5">
-        <input type="hidden" name="manu_id" value="<?php echo $row['id'] ?>" class="hidden" />
+        <input type="hidden" name="manu_id" value="<?php echo $row['id'] ?>" class="hidden" readonly />
         <div class="flex flex-col gap-3">
           <div class="flex items-center justify-center w-full">
             <label for="dropzone-file" class="flex flex-col items-center justify-center w-64 h-64 border-2 border-gray-300 border-dashed cursor-pointer bg-gray-50 hover:bg-gray-100 rounded-full block relative overflow-hidden mt-5">
@@ -23,17 +23,20 @@ $query_cate = mysqli_query($mysqli, $SQL);
               <input id="dropzone-file" type="file" class="hidden" name="manu_logo" value="<?php echo $row['logo'] ?>" />
             </label>
           </div>
+
           <div class="box-field">
             <label class="text-sm font-semibold cursor-pointer">Tên nhà sản xuất</label>
-            <input type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Please enter name manufacture..." name="manu_name" value="<?= $row['name'] ?>" />
+            <input type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Please enter name manufacture..." name="manu_name" value="<?= $row['name'] ?>" autocomplete="off" />
           </div>
+
           <div class="box-field">
             <label class="text-sm font-semibold cursor-pointer">Số điện thoại</label>
-            <input type="number" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Please enter phone manufacture..." name="manu_phone" value="<?= $row['phone_number'] ?>" />
+            <input type="number" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Please enter phone manufacture..." name="manu_phone" value="<?= $row['phone_number'] ?>" autocomplete="off" />
           </div>
+
           <div class="box-field">
             <label class="text-sm font-semibold cursor-pointer">Địa chỉ</label>
-            <input type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Please enter address manufacture..." name="manu_address" value="<?= $row['address'] ?>" />
+            <input type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Please enter address manufacture..." name="manu_address" value="<?= $row['address'] ?>" autocomplete="off" />
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@
   <h2 class="text-xl font-bold text-center mt-10 text-secondary uppercase">
     Thông tin nhà sản xuất
   </h2>
-  <form action="modules/manufacturers/process_manu_add.php" method="post" enctype="multipart/form-data">
+  <form id="form-manufacturer-add" action="modules/manufacturers/process_manu_add.php" method="post" enctype="multipart/form-data">
     <div class="mt-5">
       <div class="flex flex-col gap-3">
         <div class="flex items-center justify-center w-full">
@@ -27,17 +27,20 @@
             <input id="dropzone-file" type="file" class="hidden" name="manu_logo" />
           </label>
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Tên nhà sản xuất</label>
-          <input type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Please enter name manufacture..." name="manu_name" />
+          <input type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Please enter name manufacture..." name="manu_name" autocomplete="off" />
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Số điện thoại</label>
-          <input type="number" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Please enter phone manufacture..." name="manu_phone" />
+          <input type="number" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Please enter phone manufacture..." name="manu_phone" autocomplete="off" />
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Địa chỉ</label>
-          <input type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Please enter address manufacture..." name="manu_address" />
+          <input type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Please enter address manufacture..." name="manu_address" autocomplete="off" />
         </div>
       </div>
     </div>

@@ -11,11 +11,11 @@
       <div class="flex flex-col gap-3">
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Tên danh mục</label>
-          <input type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" name="cate_name" placeholder="Please enter name category..." />
+          <input type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" name="cate_name" placeholder="Please enter name category..." autocomplete="off" />
         </div>
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Slug</label>
-          <input type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" name="cate_slug" placeholder="Please enter slug category..." />
+          <input type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" name="cate_slug" placeholder="Please enter slug category..." autocomplete="off" />
         </div>
       </div>
     </div>

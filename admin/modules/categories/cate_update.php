@@ -16,14 +16,14 @@ $query_cate = mysqli_query($mysqli, $SQL);
       while ($row = mysqli_fetch_array($query_cate)) {
       ?>
         <div class="flex flex-col gap-3">
-          <input type="hidden" name="cate_id" value="<?php echo $row['id'] ?>" class="hidden" />
+          <input type="hidden" name="cate_id" value="<?php echo $row['id'] ?>" class="hidden" readonly />
           <div class="box-field">
             <label class="text-sm font-semibold cursor-pointer">Tên danh mục</label>
-            <input type="text" name="cate_name" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Please enter name category..." value="<?php echo $row['name'] ?>" />
+            <input type="text" name="cate_name" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Please enter name category..." value="<?php echo $row['name'] ?>" autocomplete="off" />
           </div>
           <div class="box-field">
             <label class="text-sm font-semibold cursor-pointer">Slug</label>
-            <input type="text" name="cate_slug" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Please enter slug category..." value="<?php echo $row['slug'] ?>" />
+            <input type="text" name="cate_slug" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Please enter slug category..." value="<?php echo $row['slug'] ?>" autocomplete="off" />
           </div>
         </div>
       <?php } ?>
