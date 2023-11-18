@@ -147,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                   <div>
                      <label for="email" class="block mb-1 text-sm font-medium <?= isset($_GET['emails']) ? 'text-red-600' : 'text-gray-900' ?>">Email</label>
-                     <input type="email" name="email" id="email" class="bg-gray-50 border sm:text-sm rounded-lg block w-full p-2.5 <?= isset($_SESSION['error_email']) ? 'border-red-600 text-red-600 focus:ring-red-600 focus:border-red-600'  : 'border-gray-300 text-gray-900 focus:ring-primary-600 focus:border-primary-600' ?>" value="<?php echo $confirmPassword; ?>" placeholder="name@company.com" autocomplete="off" value="<?php echo $email; ?>" />
+                     <input type="email" name="email" id="email" class="bg-gray-50 border sm:text-sm rounded-lg block w-full p-2.5 <?= isset($_SESSION['error_email']) ? 'border-red-600 text-red-600 focus:ring-red-600 focus:border-red-600'  : 'border-gray-300 text-gray-900 focus:ring-primary-600 focus:border-primary-600' ?>" value="<?php echo $email; ?>" placeholder="name@company.com" autocomplete="off" value="<?php echo $email; ?>" />
                      <?php if (isset($_SESSION['error_email'])) : ?>
                         <p class="text-red-600 text-xs font-medium"><?= $_SESSION['error_email'] ?></p>
                      <?php endif; ?>
