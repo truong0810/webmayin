@@ -28,6 +28,7 @@ $discountPercentage = (($each['price'] - $each['discount']) / $each['price']) * 
    require_once("pages/general.php");
    ?>
    <script src="./handle/script.js"></script>
+   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
    <link rel="stylesheet" href="./css/main.css" />
    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
    <title>Document</title>
@@ -446,7 +447,7 @@ $discountPercentage = (($each['price'] - $each['discount']) / $each['price']) * 
    <script src="./handle/swiper-bundle.min.js"></script>
    <!--=============== MAIN JS ===============-->
    <script src="./handle/main.js"></script>
-   <!-- <script src="./handle/logic.js"></script> -->
+   <?php require_once 'general_live_search_json.php' ?>
    <script>
       document.addEventListener('DOMContentLoaded', function() {
          const images = document.querySelectorAll('.wrapper-images img');
