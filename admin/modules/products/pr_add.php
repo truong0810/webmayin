@@ -6,6 +6,7 @@ $result_cate = mysqli_query($mysqli, $query_cate);
 $query_manu = "SELECT * FROM manufacturer";
 $result_manu = mysqli_query($mysqli, $query_manu);
 ?>
+
 <div class="dashboard-products">
   <h2 class="text-dark11 text-3xl font-bold uppercase">
     Thêm mới sản phẩm
@@ -18,7 +19,7 @@ $result_manu = mysqli_query($mysqli, $query_manu);
   }
   ?>
   <!-- FORM ADD PRODUCTS -->
-  <form action="modules/products/process_product_add.php" method="post" enctype="multipart/form-data">
+  <form id="form-product-add" action="modules/products/process_product_add.php" method="post" enctype="multipart/form-data">
     <div class="flex items-center justify-center w-full">
       <label for="dropzone-file" class="flex flex-col items-center justify-center w-64 h-64 border-2 border-gray-300 border-dashed cursor-pointer bg-gray-50 hover:bg-gray-100 rounded-full block relative overflow-hidden mt-5">
         <div class="flex flex-col items-center justify-center pt-5 pb-6">
@@ -37,6 +38,7 @@ $result_manu = mysqli_query($mysqli, $query_manu);
         <input id="dropzone-file" type="file" class="hidden" name="product_thumbnail" />
       </label>
     </div>
+
     <div class="grid grid-cols-2 gap-5 mt-10">
       <!-- THÔNG SỐ CHÍNH -->
       <div class="flex flex-col gap-3">
@@ -47,6 +49,7 @@ $result_manu = mysqli_query($mysqli, $query_manu);
           <label class="text-sm font-semibold cursor-pointer">Tên sản phẩm</label>
           <input autocomplete="off" name="product_name" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập tên sản phẩm....." />
         </div>
+
         <div class="grid grid-cols-2 gap-3">
           <div class="box-field">
             <label class="block mb-2 text-sm font-semibold cursor-pointer">Chọn nhà sản xuất</label>
@@ -60,6 +63,7 @@ $result_manu = mysqli_query($mysqli, $query_manu);
               <?php endforeach ?>
             </select>
           </div>
+
           <div class="box-field">
             <label class="block mb-2 text-sm font-semibold cursor-pointer">Chọn danh mục</label>
             <select name="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-pointer">
@@ -72,26 +76,32 @@ $result_manu = mysqli_query($mysqli, $query_manu);
             </select>
           </div>
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Giá gốc</label>
           <input autocomplete="off" name="product_price" type="number" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập giá gốc của sản phẩm....." />
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Giá khuyến mãi</label>
           <input autocomplete="off" name="product_discount" type="number" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập giá khuyến mãi của sản phẩm....." />
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Loại máy</label>
           <input autocomplete="off" name="product_type" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập loại của sản phẩm....." />
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Khổ giấy</label>
           <input autocomplete="off" name="product_papersize" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập khổ giấy của sản phẩm....." />
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Tốc độ scan</label>
           <input autocomplete="off" name="product_scanspeed" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập tốc độ scan của sản phẩm....." />
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Scan hai mặt</label>
           <div class="flex items-center gap-5">
@@ -105,6 +115,7 @@ $result_manu = mysqli_query($mysqli, $query_manu);
             </div>
           </div>
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Khuyến mãi sốc</label>
           <div class="flex items-center gap-5">
@@ -118,6 +129,7 @@ $result_manu = mysqli_query($mysqli, $query_manu);
             </div>
           </div>
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Bán chạy</label>
           <div class="flex items-center gap-5">
@@ -131,6 +143,7 @@ $result_manu = mysqli_query($mysqli, $query_manu);
             </div>
           </div>
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Khay nạp giấy tự động (ADF)</label>
           <div class="flex items-center gap-5">
@@ -144,28 +157,34 @@ $result_manu = mysqli_query($mysqli, $query_manu);
             </div>
           </div>
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Cổng giao tiếp</label>
           <input autocomplete="off" name="product_communicate" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập cổng giao tiếp của sản phẩm....." />
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Bảo hành</label>
           <input autocomplete="off" name="product_warranty" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập bảo hành của sản phẩm....." />
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Tình trạng máy</label>
           <input autocomplete="off" name="product_condition" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập tình trạng máy của sản phẩm....." />
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Upload multiple image</label>
           <input autocomplete="off" name="product_images[]" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" type="file" multiple>
 
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Mô tả sản phẩm</label>
           <textarea name="product_desc" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập mô tả của sản phẩm....."></textarea>
         </div>
       </div>
+
       <!-- THÔNG SỐ PHỤ -->
       <div class="flex flex-col gap-3">
         <h2 class="text-xl font-bold text-secondary uppercase">
@@ -175,62 +194,77 @@ $result_manu = mysqli_query($mysqli, $query_manu);
           <label class="text-sm font-semibold cursor-pointer">Chủng loại</label>
           <input autocomplete="off" name="product_species" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập chủng loại sản phẩm....." />
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Loại máy</label>
           <input autocomplete="off" name="product_machinetype" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập loại máy của sản phẩm....." />
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Chu kỳ hoạt động (hàng ngày)</label>
           <input autocomplete="off" name="product_activitycycle" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập chu kỳ hoạt động của sản phẩm....." />
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Độ phân giải quang học</label>
           <input autocomplete="off" name="product_opticalresolution" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập độ phân giải quang học của sản phẩm....." />
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Công suất khay nạp tài liệu tự động</label>
           <input autocomplete="off" name="product_autodocfeeder" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập công suất khay nạp tài liệu tự động của sản phẩm....." />
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Tùy chọn chụp quét (ADF)</label>
           <input autocomplete="off" name="product_scanoptions" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập tùy chọn chụp quét của sản phẩm....." />
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Kích thước chụp quét (ADF)</label>
           <textarea name="product_scansize" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập kích thước của sản phẩm....."></textarea>
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Trọng lượng giấy ảnh media, được hỗ trợ ADF</label>
           <input autocomplete="off" name="product_supportweight" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập trọng lượng của sản phẩm....." />
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Tốc độ chụp quét của khay nạp tài liệu tự động</label>
           <input autocomplete="off" name="product_autoscanspeed" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập tốc độ chụp quét của khay nạp tài liệu tự động của sản phẩm....." />
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Chiều sâu bit màu</label>
           <input autocomplete="off" name="product_colorbitdepth" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập chiều sâu bit màu của sản phẩm....." />
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Bộ nhớ</label>
           <input autocomplete="off" name="product_memory" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập bộ nhớ của sản phẩm....." />
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Định dạng file scan</label>
           <textarea name="product_scanfileformat" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập định dạng file scan của sản phẩm....."></textarea>
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Kết nối</label>
           <textarea name="product_connect" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập kết nối của sản phẩm....."></textarea>
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Hệ điều hành tương thích</label>
           <textarea name="product_operatingsystem" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập hệ điều hành tương thích của sản phẩm....."></textarea>
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Kích thước</label>
           <textarea name="product_printersize" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập kích thước của sản phẩm....."></textarea>
         </div>
+
         <div class="box-field">
           <label class="text-sm font-semibold cursor-pointer">Trọng lượng</label>
           <input autocomplete="off" name="product_weight" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập trọng lượng của sản phẩm....." />

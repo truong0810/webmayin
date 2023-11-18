@@ -36,7 +36,7 @@ $image_count = $row_images_check['image_count'];
     Cập nhập sản phẩm
   </h2>
   <!-- FORM UPDATE PRODUCTS -->
-  <form action="modules/products/process_product_update.php" method="post" enctype="multipart/form-data">
+  <form id="form-product-update" action="modules/products/process_product_update.php" method="post" enctype="multipart/form-data">
     <input type="hidden" name="pr_id" value="<?= $product_id ?>" class="hidden" />
     <div class="flex items-center justify-center w-full">
       <label for="dropzone-file" class="w-[350px] flex flex-col items-center justify-center w-64 h-64 border-2 border-gray-300 border-dashed cursor-pointer bg-gray-50 hover:bg-gray-100 rounded-xl block relative overflow-hidden mt-5">
