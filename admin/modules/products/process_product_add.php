@@ -1,5 +1,4 @@
 <?php
-require '../../check_admin_login.php';
 require_once("../../config/config.php");
 $tensanpham = $_POST['product_name'];
 $nhasanxuat = intval($_POST['manufacturer_id']);

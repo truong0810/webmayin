@@ -1,5 +1,4 @@
 <?php
-require '../../check_admin_login.php';
 require_once("../../config/config.php");
 $product_id = $_POST['pr_id'];
 
