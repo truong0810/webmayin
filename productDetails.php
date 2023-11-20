@@ -9,7 +9,7 @@ $result_quantity = mysqli_query($mysqli, $sql_quantity);
 $ket_qua_so_product = mysqli_fetch_array($result_quantity);
 $so_product = $ket_qua_so_product['COUNT(*)'];
 
-$so_product_tren_1_trang = 1;
+$so_product_tren_1_trang = 15;
 $so_trang = ceil($so_product / $so_product_tren_1_trang);
 $bo_qua = $so_product_tren_1_trang * ($page - 1);
 
