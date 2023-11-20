@@ -3,7 +3,7 @@ $sql_khuyenmai = "SELECT * FROM product WHERE hot_sale = 1 ORDER BY id ASC";
 $query_khuyenmai = mysqli_query($mysqli, $sql_khuyenmai);
 ?>
 <section class="product-filter">
-   <div class="mt-10 border-b border-graydb">
+   <div class="mt-10 border-b border-graydb px-3">
       <?php require("navigationPrinterFilter.php") ?>
 
       <div class="product-list mt-10 w-[1495px] overflow-x-auto flex items-center gap-4 flex-wrap mb-10">

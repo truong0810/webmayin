@@ -447,6 +447,7 @@ $discountPercentage = (($each['price'] - $each['discount']) / $each['price']) * 
    <script src="./handle/swiper-bundle.min.js"></script>
    <!--=============== MAIN JS ===============-->
    <script src="./handle/main.js"></script>
+   <script src="./handle/logic.js"></script>
    <?php require_once 'general_live_search_json.php' ?>
    <script>
       document.addEventListener('DOMContentLoaded', function() {

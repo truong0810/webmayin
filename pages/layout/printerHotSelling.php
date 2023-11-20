@@ -3,7 +3,7 @@ $sql_banchay = "SELECT * FROM product WHERE hot_selling = 1 ORDER BY id ASC";
 $query_banchay = mysqli_query($mysqli, $sql_banchay);
 ?>
 <section class="product-filter">
-   <div class="mt-10 border-b border-graydb">
+   <div class="mt-10 border-b border-graydb px-3">
       <?php require("navigationPrinterFilter.php") ?>
 
       <div class="product-list mt-10 w-[1495px] overflow-x-auto flex items-center gap-4 flex-wrap mb-10">

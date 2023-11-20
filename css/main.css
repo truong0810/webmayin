@@ -3,7 +3,14 @@
 @tailwind utilities;
 
 @layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
   body {
+    width: 100%;
+    overflow-x: hidden;
     font-size: 16px;
     font-weight: 400;
     font-family: 'Montserrat', 'sans-serif';
@@ -335,4 +342,16 @@ body > .ui-menu.ui-widget {
   top: 69.0625px !important;
   left: 559.763px !important;
   width: 672.4px !important;
+}
+
+/* WARRANTY */
+.warranty__content {
+  display: none;
+}
+.warranty__tab--active {
+  color: #38812c !important;
+  background: #ccc !important;
+}
+.warranty__content--active {
+  display: block;
 }

@@ -1,4 +1,7 @@
-<header>
+<?php
+$active = isset($_GET['about']) ? $_GET['about'] : '';
+?>
+<header class="header">
    <setion class="header-info">
       <div class="flex items-center py-[25px] px-[15px]">
          <!-- Header Logo -->
@@ -85,19 +88,19 @@
       <nav>
          <ul class="flex items-center gap-14">
             <li>
-               <a href="index.php" class="uppercase font-semibold nav-active relative">Trang Chủ</a>
+               <a href="index.php" class="uppercase font-semibold <?= $active == '' ? 'nav-active' : '' ?> relative">Trang Chủ</a>
             </li>
             <li>
-               <a href="#" class="uppercase font-semibold relative">Về chúng tôi</a>
+               <a href="index.php?about=ve-chung-toi" class="uppercase font-semibold relative <?= $active == 've-chung-toi' ? 'nav-active' : '' ?>">Về chúng tôi</a>
             </li>
             <li>
-               <a href="#" class="uppercase font-semibold relative">Tin tức</a>
+               <a href="index.php?about=tin-tuc" class=" uppercase font-semibold relative <?= $active == 'tin-tuc' ? 'nav-active' : '' ?>">Tin tức</a>
             </li>
             <li>
-               <a href="#" class="uppercase font-semibold relative">Chính sách vận chuyển</a>
+               <a href="index.php?about=chinh-sach-van-chuyen" class="uppercase font-semibold relative <?= $active == 'chinh-sach-van-chuyen' ? 'nav-active' : '' ?>">Chính sách vận chuyển</a>
             </li>
             <li>
-               <a href="#" class="uppercase font-semibold relative">Chính sách bảo hành</a>
+               <a href="index.php?about=chinh-sach-bao-hanh" class="uppercase font-semibold relative <?= $active == 'chinh-sach-bao-hanh' ? 'nav-active' : '' ?>">Chính sách bảo hành</a>
             </li>
          </ul>
       </nav>

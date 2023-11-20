@@ -1,5 +1,5 @@
 <section class="main-service">
-  <div class="grid grid-cols-4 gap-5 mt-10">
+  <div class="grid grid-cols-4 gap-5 mt-10 px-3">
     <div class="service-banner" style="
                 background-image: url('https://shopmayvanphong.vn/wp-content/uploads/2023/08/image-delevery-bg.jpg');
               ">

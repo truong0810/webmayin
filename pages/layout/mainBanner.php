@@ -3,7 +3,7 @@ $sql_manufacturer = "SELECT * FROM manufacturer ORDER BY id DESC";
 $query_manufacturer = mysqli_query($mysqli, $sql_manufacturer);
 ?>
 <section class="main-banner">
-  <div class="grid grid-cols-[350px_minmax(0,1fr)] py-5 gap-6">
+  <div class="px-3 grid grid-cols-[350px_minmax(0,1fr)] py-5 gap-6">
     <!-- Categories -->
     <div>
       <ul class="dropdown-list border-2 border-primary rounded-md relative">

@@ -5,7 +5,7 @@ $result = mysqli_query($mysqli, $sql);
 $sql_ordered = "SELECT orders.*, user.fullname, user.email, user.phone_number 
 FROM orders 
 JOIN user ON user.id = orders.user_id 
-WHERE status IN (1, 2)";
+WHERE status IN (1, 2) ORDER BY id DESC";
 $result_ordered = mysqli_query($mysqli, $sql_ordered);
 
 ?>

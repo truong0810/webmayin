@@ -14,7 +14,7 @@ session_start();
    <?php
    require_once("pages/general.php");
    ?>
-   <script src="./handle/script.js"></script>
+   <script src="./handle/script.js" defer></script>
    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
    <link rel="stylesheet" href="./css/main.css" />
 
@@ -29,8 +29,6 @@ session_start();
       require_once("pages/footer.php");
       ?>
    </div>
-
-
 
    <!--=============== SWIPER JS ===============-->
    <script src="./handle/swiper-bundle.min.js"></script>

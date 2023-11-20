@@ -1,4 +1,4 @@
-<section class="brand-list">
+<section class="brand-list px-3">
   <div class="swiper__brand swiper swiper-container">
     <div class="swiper-wrapper">
       <div class="brand-item swiper-slide mx-[30px]">

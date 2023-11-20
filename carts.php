@@ -166,14 +166,8 @@ $sum = 0;
   <script src="./handle/swiper-bundle.min.js"></script>
   <!--=============== MAIN JS ===============-->
   <script src="./handle/main.js"></script>
+  <script src="./handle/logic.js"></script>
   <?php require_once 'general_live_search_json.php' ?>
-  <script type="text/javascript">
-    const dashboardUser = document.querySelector('.dashboard-user');
-    const dashboardUserSetting = document.querySelector('.dashboard-user-setting');
-    dashboardUser?.addEventListener('click', function() {
-      dashboardUserSetting.classList.toggle('hidden-sub');
-    });
-  </script>
 </body>
 
 </html>

@@ -3,7 +3,7 @@ $sql_category = "SELECT * FROM category ORDER BY id ASC";
 $query_category = mysqli_query($mysqli, $sql_category);
 ?>
 
-<section class="pinter-list">
+<section class="pinter-list px-3">
    <div class="heading-pinter flex items-center justify-between mt-5">
       <div class="flex items-center gap-3 bg-white z-10">
          <span>

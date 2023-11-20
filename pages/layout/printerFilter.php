@@ -3,7 +3,7 @@ $sql_sanphammoi = "SELECT * FROM product ORDER BY id DESC";
 $query_sanphammoi = mysqli_query($mysqli, $sql_sanphammoi);
 ?>
 <section class="product-filter">
-  <div class="mt-10 border-b border-graydb">
+  <div class="mt-10 border-b border-graydb px-3">
     <?php require("navigationPrinterFilter.php") ?>
 
     <div class="product-list mt-10 w-[1495px] overflow-x-auto flex items-center gap-4 flex-wrap mb-10">
