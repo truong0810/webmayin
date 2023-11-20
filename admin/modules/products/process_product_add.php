@@ -15,7 +15,7 @@ $khaynaptudong = intval($_POST['product_automatic']);
 $conggiaotiep = $_POST['product_communicate'];
 $baohanh = $_POST['product_warranty'];
 $tinhtrangmay = $_POST['product_condition'];
-$motasanpham = $_POST['product_desc'];
+$motasanpham = $_POST['product_desc_add'];
 // THÔNG SỐ PHỤ
 $chungloai = $_POST['product_species'];
 $loaimayin = $_POST['product_machinetype'];

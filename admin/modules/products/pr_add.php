@@ -101,58 +101,60 @@ $result_manu = mysqli_query($mysqli, $query_manu);
           <input autocomplete="off" name="product_scanspeed" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập tốc độ scan của sản phẩm....." />
         </div>
 
-        <div class="box-field">
-          <label class="text-sm font-semibold cursor-pointer">Scan hai mặt</label>
-          <div class="flex items-center gap-5">
-            <div class="flex items-center justify-center gap-2">
-              <label>Có</label>
-              <input type="radio" name="product_doublescan" value="1" />
+        <div class="flex items-center gap-x-[100px]">
+          <div class="box-field">
+            <label class="text-sm font-semibold cursor-pointer">Scan hai mặt</label>
+            <div class="flex items-center gap-5">
+              <div class="flex items-center justify-center gap-2">
+                <label>Có</label>
+                <input type="radio" name="product_doublescan" value="1" />
+              </div>
+              <div class="flex items-center justify-center gap-2">
+                <label>Không</label>
+                <input type="radio" name="product_doublescan" value="0" />
+              </div>
             </div>
-            <div class="flex items-center justify-center gap-2">
-              <label>Không</label>
-              <input type="radio" name="product_doublescan" value="0" />
+          </div>
+          <div class="box-field">
+            <label class="text-sm font-semibold cursor-pointer">Khuyến mãi sốc</label>
+            <div class="flex items-center gap-5">
+              <div class="flex items-center justify-center gap-2">
+                <label>Có</label>
+                <input type="radio" name="product_promotion" value="1" />
+              </div>
+              <div class="flex items-center justify-center gap-2">
+                <label>Không</label>
+                <input type="radio" name="product_promotion" value="0" />
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="box-field">
-          <label class="text-sm font-semibold cursor-pointer">Khuyến mãi sốc</label>
-          <div class="flex items-center gap-5">
-            <div class="flex items-center justify-center gap-2">
-              <label>Có</label>
-              <input type="radio" name="product_promotion" value="1" />
-            </div>
-            <div class="flex items-center justify-center gap-2">
-              <label>Không</label>
-              <input type="radio" name="product_promotion" value="0" />
-            </div>
-          </div>
-        </div>
-
-        <div class="box-field">
-          <label class="text-sm font-semibold cursor-pointer">Bán chạy</label>
-          <div class="flex items-center gap-5">
-            <div class="flex items-center justify-center gap-2">
-              <label>Có</label>
-              <input type="radio" name="product_selling" value="1" />
-            </div>
-            <div class="flex items-center justify-center gap-2">
-              <label>Không</label>
-              <input type="radio" name="product_selling" value="0" />
+        <div class="flex items-center gap-x-[100px]">
+          <div class="box-field">
+            <label class="text-sm font-semibold cursor-pointer">Bán chạy</label>
+            <div class="flex items-center gap-5">
+              <div class="flex items-center justify-center gap-2">
+                <label>Có</label>
+                <input type="radio" name="product_selling" value="1" />
+              </div>
+              <div class="flex items-center justify-center gap-2">
+                <label>Không</label>
+                <input type="radio" name="product_selling" value="0" />
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="box-field">
-          <label class="text-sm font-semibold cursor-pointer">Khay nạp giấy tự động (ADF)</label>
-          <div class="flex items-center gap-5">
-            <div class="flex items-center justify-center gap-2">
-              <label>Có sẵn</label>
-              <input type="radio" name="product_automatic" value="1" />
-            </div>
-            <div class="flex items-center justify-center gap-2">
-              <label>Không có sẵn</label>
-              <input type="radio" name="product_automatic" value="0" />
+          <div class="box-field">
+            <label class="text-sm font-semibold cursor-pointer">Khay nạp giấy tự động (ADF)</label>
+            <div class="flex items-center gap-5">
+              <div class="flex items-center justify-center gap-2">
+                <label>Có sẵn</label>
+                <input type="radio" name="product_automatic" value="1" />
+              </div>
+              <div class="flex items-center justify-center gap-2">
+                <label>Không có sẵn</label>
+                <input type="radio" name="product_automatic" value="0" />
+              </div>
             </div>
           </div>
         </div>
@@ -179,8 +181,13 @@ $result_manu = mysqli_query($mysqli, $query_manu);
         </div>
 
         <div class="box-field">
-          <label class="text-sm font-semibold cursor-pointer">Mô tả sản phẩm</label>
-          <textarea name="product_desc" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập mô tả của sản phẩm....."></textarea>
+          <label class="text-sm font-semibold cursor-pointer">Kích thước</label>
+          <textarea name="product_printersize" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập kích thước của sản phẩm....."></textarea>
+        </div>
+
+        <div class="box-field">
+          <label class="text-sm font-semibold cursor-pointer">Trọng lượng</label>
+          <input autocomplete="off" name="product_weight" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập trọng lượng của sản phẩm....." />
         </div>
       </div>
 
@@ -258,17 +265,12 @@ $result_manu = mysqli_query($mysqli, $query_manu);
           <label class="text-sm font-semibold cursor-pointer">Hệ điều hành tương thích</label>
           <textarea name="product_operatingsystem" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập hệ điều hành tương thích của sản phẩm....."></textarea>
         </div>
-
-        <div class="box-field">
-          <label class="text-sm font-semibold cursor-pointer">Kích thước</label>
-          <textarea name="product_printersize" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập kích thước của sản phẩm....."></textarea>
-        </div>
-
-        <div class="box-field">
-          <label class="text-sm font-semibold cursor-pointer">Trọng lượng</label>
-          <input autocomplete="off" name="product_weight" type="text" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập trọng lượng của sản phẩm....." />
-        </div>
       </div>
+    </div>
+
+    <div class="box-field">
+      <label class="text-sm font-semibold cursor-pointer">Mô tả sản phẩm</label>
+      <textarea name="product_desc_add" class="p-[6px] bg-[#f9fafb] border border-gray-400 w-full rounded-md outline-none" placeholder="Nhập mô tả của sản phẩm....."></textarea>
     </div>
 
     <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-lg font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 mt-10 uppercase" type="submit" name="product_add">

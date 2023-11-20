@@ -14,6 +14,7 @@ require_once("config/config.php");
    <?php
    require_once("../pages/general.php");
    ?>
+
    <script src="../handle/script.js"></script>
    <link rel="stylesheet" href="../css/main.css" />
    <link rel="stylesheet" href="./css/style.css">
@@ -92,20 +93,29 @@ require_once("config/config.php");
       </main>
    </div>
    <!-- Thư viện SweetAlert2 JS -->
-   <script src="./js//jquery-3.7.1.min.js"></script>
+   <script src="./js/jquery-3.7.1.min.js"></script>
    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
    <!-- Thư viện validate -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js" integrity="sha512-WMEKGZ7L5LWgaPeJtw9MBM4i5w5OSBlSjTjCtSnvFJGSVD26gE5+Td12qN5pvWXhuWaWcVwF++F7aqu9cvqP0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/additional-methods.min.js" integrity="sha512-TiQST7x/0aMjgVTcep29gi+q5Lk5gVTUPE9XgN0g96rwtjEjLpod4mlBRKWHeBcvGBAEvJBmfDqh2hfMMmg+5A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+   <!-- Thư viện CKEditor -->
+   <script src="https://cdn.ckeditor.com/4.22.1/full/ckeditor.js"></script>
+
    <!-- Thư viện làm biểu đồ thống kê -->
    <script src="https://code.highcharts.com/highcharts.js"></script>
    <script src="https://code.highcharts.com/modules/series-label.js"></script>
    <script src="https://code.highcharts.com/modules/exporting.js"></script>
    <script src="https://code.highcharts.com/modules/export-data.js"></script>
    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
    <script src="./js/custom.js"></script>
    <script src="./js/validate.js"></script>
    <script type="text/javascript">
+      CKEDITOR.replace('product_desc_add');
+      CKEDITOR.replace('product_desc');
+
       $(document).ready(function() {
          const day = 7;
          $.ajax({
