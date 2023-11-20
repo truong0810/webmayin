@@ -1,4 +1,5 @@
 <?php
+require 'check_super_admin_login.php';
 $product_id = $_GET['id'];
 $sql_update = "SELECT product.*,category.name AS category_name, manufacturer.name AS manufacturer_name, product_details.*, product_images.*
 FROM product

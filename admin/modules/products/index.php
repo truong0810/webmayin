@@ -1,5 +1,5 @@
 <?php
-require 'check_admin_login.php';
+require 'check_super_admin_login.php';
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $search = '';
 if (isset($_GET['search'])) {

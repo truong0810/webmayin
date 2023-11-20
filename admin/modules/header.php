@@ -45,7 +45,7 @@
             <a href="#" class="hover:bg-gray-200 w-full transition-all">
               <span class="px-3 py-2 inline-block">Settings</span>
             </a>
-            <a href="#" class="hover:bg-gray-200 w-full transition-all">
+            <a href="signout.php" class="hover:bg-gray-200 w-full transition-all">
               <span class="px-3 py-2 inline-block">Sign out</span>
             </a>
           </div>
