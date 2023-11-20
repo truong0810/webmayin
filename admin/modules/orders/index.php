@@ -1,11 +1,23 @@
 <?php
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+
+// =============PHAN TRANG ======================
+$sql_so_dondadat = "SELECT COUNT(*) from orders WHERE status IN (1, 2)";
+$mang_so_dondadat = mysqli_query($mysqli, $sql_so_dondadat);
+$ket_qua_so_dondadat = mysqli_fetch_array($mang_so_dondadat);
+$so_dondadat = $ket_qua_so_dondadat['COUNT(*)'];
+
+$so_dondadat_tren_1_trang = 2;
+$so_trang = ceil($so_dondadat / $so_dondadat_tren_1_trang);
+$bo_qua = $so_dondadat_tren_1_trang * ($page - 1);
+
 $sql = "SELECT orders.*,user.fullname,user.email,user.phone_number FROM orders JOIN user ON user.id = orders.user_id WHERE status = 0";
 $result = mysqli_query($mysqli, $sql);
 
 $sql_ordered = "SELECT orders.*, user.fullname, user.email, user.phone_number 
 FROM orders 
 JOIN user ON user.id = orders.user_id 
-WHERE status IN (1, 2) ORDER BY id DESC";
+WHERE status IN (1, 2) ORDER BY id DESC LIMIT $so_dondadat_tren_1_trang OFFSET $bo_qua";
 $result_ordered = mysqli_query($mysqli, $sql_ordered);
 
 ?>
@@ -68,6 +80,18 @@ $result_ordered = mysqli_query($mysqli, $sql_ordered);
             </tbody>
          </table>
       </div>
+      <?php if ($so_dondadat > 0) { ?>
+         <!-- PAGINATION -->
+         <div class="flex items-center justify-end gap-3 mt-10 mr-20">
+            <?php
+            for ($i = 1; $i <= $so_trang; $i++) {
+            ?>
+               <a href="index.php?action=quanlydonhang&page=<?php echo $i ?>" class="inline-block text-black font-medium <?php echo $page == $i ? 'pagi-active' : '' ?>">
+                  <?php echo $i ?>
+               </a>
+            <?php } ?>
+         </div>
+      <?php } ?>
    </div>
 
    <!-- DANH SÁCH ĐƠN HÀNG CHƯA ĐẶT -->
@@ -122,12 +146,5 @@ $result_ordered = mysqli_query($mysqli, $sql_ordered);
             </tbody>
          </table>
       </div>
-   </div>
-
-   <!-- PAGINATION -->
-   <div class="flex items-center justify-end gap-3 mt-10 mr-20">
-      <a href="#" class="pagi-active inline-block text-black font-medium">1</a>
-      <a href="#" class="inline-block text-black font-medium">2</a>
-      <a href="#" class="inline-block text-black font-medium">3</a>
    </div>
 </div>
