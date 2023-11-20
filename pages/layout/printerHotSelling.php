@@ -26,7 +26,7 @@ $query_banchay = mysqli_query($mysqli, $sql_banchay);
 
                   <?php if (!empty($_SESSION['id_user'])) { ?>
                      <div class="btn my-5">
-                        <a href="#" class="inline-flex items-center justify-center gap-3 bg-primary py-[6px] px-5 rounded-lg text-white uppercase hover:bg-primaryHover transition-all">
+                        <a href="process_add_to_cart.php?id=<?= $row['id'] ?>" class="inline-flex items-center justify-center gap-3 bg-primary py-[6px] px-5 rounded-lg text-white uppercase hover:bg-primaryHover transition-all">
                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                               <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                            </svg>
