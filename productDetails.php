@@ -1,8 +1,23 @@
 <?php
 require_once("admin/config/config.php");
 session_start();
-$sql = "SELECT * FROM product";
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+
+// PAGINATION
+$sql_quantity = "SELECT COUNT(*) FROM product";
+$result_quantity = mysqli_query($mysqli, $sql_quantity);
+$ket_qua_so_product = mysqli_fetch_array($result_quantity);
+$so_product = $ket_qua_so_product['COUNT(*)'];
+
+$so_product_tren_1_trang = 1;
+$so_trang = ceil($so_product / $so_product_tren_1_trang);
+$bo_qua = $so_product_tren_1_trang * ($page - 1);
+
+$sql = "SELECT * FROM product LIMIT $so_product_tren_1_trang OFFSET $bo_qua";
 $result = mysqli_query($mysqli, $sql);
+
+$prev_page = $page - 1;
+$next_page = $page + 1;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +31,7 @@ $result = mysqli_query($mysqli, $sql);
    <?php
    require_once("pages/general.php");
    ?>
+   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
    <script src="./handle/script.js"></script>
    <link rel="stylesheet" href="./css/main.css" />
    <title>Document</title>
@@ -61,12 +77,17 @@ $result = mysqli_query($mysqli, $sql);
                         <h3 class="text-black text-2xl font-bold uppercase">
                            Máy in màu đa năng
                         </h3>
-                        <p class="text-sm font-medium">(Tổng <span class="font-semibold text-primary text-base">39</span> sản phẩm)</p>
+                        <p class="text-sm font-medium">(Tổng <span class="font-semibold text-primary text-base"><?= $so_product ?></span> sản phẩm)</p>
                      </div>
-                     <div class="flex items-center justify-center gap-2">
-                        <a href="#" class="w-[50px] h-[50px] flex items-center justify-center rounded-full bg-primaryHover text-lg text-white font-semibold">1</a>
-                        <a href="#" class="w-[50px] h-[50px] flex items-center justify-center rounded-full text-lg text-primary font-semibold border border-primary hover:text-white hover:bg-primary transition-all">2</a>
-                     </div>
+                     <?php if ($so_product > 0) { ?>
+                        <div class="flex items-center justify-center gap-2">
+                           <?php for ($i = 1; $i <= $so_trang; $i++) { ?>
+                              <a href="productDetails.php?page=<?= $i ?>" class="transition-all w-[50px] h-[50px] flex items-center justify-center rounded-full text-lg font-semibold <?= $page == $i ? 'text-white bg-primaryHover' : 'border text-primary border-primary hover:text-white hover:bg-primary' ?>">
+                                 <?php echo $i ?>
+                              </a>
+                           <?php } ?>
+                        </div>
+                     <?php } ?>
                   </div>
                </div>
                <!-- CONTAINER -->
@@ -114,16 +135,25 @@ $result = mysqli_query($mysqli, $sql);
                   <?php endforeach ?>
                </div>
 
-               <!-- PAGINATION -->
-               <div class="flex items-center justify-center gap-2">
-                  <a href="#" class="w-[50px] h-[50px] flex items-center justify-center rounded-full text-lg text-primary font-semibold border border-primary hover:text-white hover:bg-primary transition-all">
-                     < </a>
-                        <a href="#" class="w-[50px] h-[50px] flex items-center justify-center rounded-full bg-primaryHover text-lg text-white font-semibold">1</a>
-                        <a href="#" class="w-[50px] h-[50px] flex items-center justify-center rounded-full text-lg text-primary font-semibold border border-primary hover:text-white hover:bg-primary transition-all">2</a>
-                        <a href="#" class="w-[50px] h-[50px] flex items-center justify-center rounded-full text-lg text-primary font-semibold border border-primary hover:text-white hover:bg-primary transition-all">
-                           > </a>
-               </div>
+               <?php if ($so_product > 0) { ?>
+                  <!-- PAGINATION -->
+                  <div class="flex items-center justify-center gap-2">
+                     <a href="<?= $prev_page > 0 ? '?page=' . $prev_page : '#' ?>" class="w-[50px] h-[50px] flex items-center justify-center rounded-full text-lg text-primary font-semibold border border-primary hover:text-white hover:bg-primary transition-all <?= $prev_page > 0 ? '' : 'pointer-events-none' ?>" <?= $prev_page > 0 ? '' : 'disabled' ?>>
+                        < </a>
+                           <?php for ($i = 1; $i <= $so_trang; $i++) { ?>
+                              <a href="productDetails.php?page=<?= $i ?>" class="transition-all w-[50px] h-[50px] flex items-center justify-center rounded-full text-lg font-semibold <?= $page == $i ? 'text-white bg-primaryHover' : 'border text-primary border-primary hover:text-white hover:bg-primary' ?>">
+                                 <?php echo $i ?>
+                              </a>
+                           <?php } ?>
+                           <a href="<?= $next_page <= $so_trang ? '?page=' . $next_page : '#' ?>" class="w-[50px] h-[50px] flex items-center justify-center rounded-full text-lg text-primary font-semibold border border-primary hover:text-white hover:bg-primary transition-all
+                           <?= $next_page <= $so_trang ? '' : 'pointer-events-none' ?>
+                           " <?= $next_page <= $so_trang ? '' : 'disabled' ?>>
+                              > </a>
+                  </div>
+               <?php } ?>
             </div>
+
+
             <!-- RIGHT -->
             <div class="py-[35px] px-[15px]">
                <h3 class="flex items-center justify-center gap-2 text-2xl font-bold uppercase">
@@ -226,6 +256,7 @@ $result = mysqli_query($mysqli, $sql);
    <!--=============== MAIN JS ===============-->
    <script src="./handle/main.js"></script>
    <script src="./handle/logic.js"></script>
+   <?php require_once 'general_live_search_json.php' ?>
 </body>
 
 </html>
