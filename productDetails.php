@@ -62,13 +62,11 @@ $next_page = $page + 1;
                         <a href="#" class="text-sm text-primary font-bold">Máy in màu đa năng</a>
                      </div>
                      <div class="flex items-center justify-center gap-1">
-                        <label for="countries" class="block text-sm font-medium text-gray-900 ">Sắp xếp theo:</label>
-                        <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 cursor-pointer w-auto">
-                           <option selected>Thứ tự mặc định</option>
-                           <option value="">Thứ tự theo mức độ phổ biến</option>
-                           <option value="">Thứ tự theo điểm đánh giá</option>
-                           <option value="">Mới nhất</option>
-                           <option value="">Giảm dần</option>
+                        <label for="product_filter" class="block text-sm font-medium text-gray-900 ">Sắp xếp theo:</label>
+                        <select id="product_filter" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 cursor-pointer w-auto">
+                           <option selected value="">Thứ tự mặc định</option>
+                           <option value="asc">Mới nhất</option>
+                           <option value="desc">Giảm dần</option>
                         </select>
                      </div>
                   </div>

@@ -149,9 +149,15 @@ $sum = 0;
               </div>
             </div>
 
-            <button type="submit" name="order" class="font-bold py-3 text-white bg-[#195bbc] w-full text-center rounded-lg uppercase mt-10 hover:bg-[#144996] transition-all">
-              Đặt hàng
-            </button>
+            <?php if (!empty($_SESSION['cart'])) { ?>
+              <button type="submit" name="order" class="font-bold py-3 text-white bg-[#195bbc] w-full text-center rounded-lg uppercase mt-10 hover:bg-[#144996] transition-all">
+                Đặt hàng
+              </button>
+            <?php } else { ?>
+              <p class="font-bold py-3 text-white bg-[#195bbc] w-full text-center rounded-lg uppercase mt-10 hover:bg-[#144996] transition-all">
+                Đặt hàng
+              </p>
+            <?php } ?>
           </div>
         </div>
       </form>
