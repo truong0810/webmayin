@@ -1,12 +1,19 @@
 <?php
 require 'check_super_admin_login.php';
-$product_id = $_GET['id'];
 
-// $query_cate = "SELECT * FROM category";
-// $result_cate = mysqli_query($mysqli, $query_cate);
+if (!isset($_GET['id']) || empty($_GET['id'])) {
+  echo '<script>window.location.href = "admin_404.php"</script>';
+  exit();
+}
+$product_id = mysqli_real_escape_string($mysqli, $_GET['id']);
 
-// $query_manu = "SELECT * FROM manufacturer";
-// $result_manu = mysqli_query($mysqli, $query_manu);
+$check_query = "SELECT * FROM product WHERE id = '$product_id'";
+$check_result = mysqli_query($mysqli, $check_query);
+
+if (mysqli_num_rows($check_result) === 0) {
+  echo '<script>window.location.href = "admin_404.php"</script>';
+  exit();
+}
 
 $sql = "SELECT product.*,category.name AS category_name, manufacturer.name AS manufacturer_name, product_details.*, product_images.*
 FROM product
@@ -14,7 +21,7 @@ LEFT JOIN category ON product.category_id = category.id
 LEFT JOIN manufacturer ON product.manufacturer_id = manufacturer.id
 LEFT JOIN product_details ON product.id = product_details.product_id
 LEFT JOIN product_images ON product.id = product_images.product_id
-WHERE product.id = $product_id";
+WHERE product.id = '$product_id'";
 
 $query_product = mysqli_query($mysqli, $sql);
 $each = mysqli_fetch_array($query_product);

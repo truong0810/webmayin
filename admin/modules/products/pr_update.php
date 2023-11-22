@@ -1,5 +1,11 @@
 <?php
 require 'check_super_admin_login.php';
+
+if (!isset($_GET['id']) || empty($_GET['id'])) {
+  echo '<script>window.location.href = "admin_404.php"</script>';
+  exit();
+}
+
 $product_id = $_GET['id'];
 $sql_update = "SELECT product.*,category.name AS category_name, manufacturer.name AS manufacturer_name, product_details.*, product_images.*
 FROM product
@@ -11,6 +17,11 @@ WHERE product.id = $product_id";
 
 $query_product = mysqli_query($mysqli, $sql_update);
 $each = mysqli_fetch_array($query_product);
+
+if (!$each) {
+  echo '<script>window.location.href = "admin_404.php"</script>';
+  exit();
+}
 
 // Tiến hành tạo các giá trị mặc định cho các trường select
 $selected_category_id = $each['category_id'];

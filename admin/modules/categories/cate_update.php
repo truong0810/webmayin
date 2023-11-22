@@ -1,5 +1,19 @@
 <?php
-$SQL = "SELECT * FROM category WHERE id = '$_GET[id]'";
+if (!isset($_GET['id']) || empty($_GET['id'])) {
+  echo '<script>window.location.href = "admin_404.php"</script>';
+  exit();
+}
+$category_id = mysqli_real_escape_string($mysqli, $_GET['id']);
+
+$check_query = "SELECT * FROM category WHERE id = '$category_id'";
+$check_result = mysqli_query($mysqli, $check_query);
+
+if (mysqli_num_rows($check_result) === 0) {
+  echo '<script>window.location.href = "admin_404.php"</script>';
+  exit();
+}
+
+$SQL = "SELECT * FROM category WHERE id = '$category_id'";
 $query_cate = mysqli_query($mysqli, $SQL);
 ?>
 <div class="dashboard-products">

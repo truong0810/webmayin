@@ -10,6 +10,13 @@ LEFT JOIN product_images ON product.id = product_images.product_id
 WHERE product.id = $product_id";
 
 $query_product_details = mysqli_query($mysqli, $sql_chitiet);
+
+if (!$query_product_details || mysqli_num_rows($query_product_details) == 0) {
+   header("Location: 404.php");
+   exit();
+}
+
+
 $each = mysqli_fetch_array($query_product_details);
 
 $discountPercentage = (($each['price'] - $each['discount']) / $each['price']) * 100;
@@ -32,7 +39,7 @@ $discountPercentage = (($each['price'] - $each['discount']) / $each['price']) * 
    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
    <link rel="stylesheet" href="./css/main.css" />
    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
-   <title>Document</title>
+   <title>Trang chủ</title>
 </head>
 
 <body class="w-full h-full min-h-[100vh]">

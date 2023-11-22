@@ -7,7 +7,7 @@ $mang_so_dondadat = mysqli_query($mysqli, $sql_so_dondadat);
 $ket_qua_so_dondadat = mysqli_fetch_array($mang_so_dondadat);
 $so_dondadat = $ket_qua_so_dondadat['COUNT(*)'];
 
-$so_dondadat_tren_1_trang = 2;
+$so_dondadat_tren_1_trang = 4;
 $so_trang = ceil($so_dondadat / $so_dondadat_tren_1_trang);
 $bo_qua = $so_dondadat_tren_1_trang * ($page - 1);
 

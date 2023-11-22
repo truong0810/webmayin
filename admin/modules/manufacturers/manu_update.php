@@ -1,6 +1,21 @@
 <?php
-$SQL = "SELECT * FROM manufacturer WHERE id = $_GET[id]";
-$query_cate = mysqli_query($mysqli, $SQL);
+if (!isset($_GET['id']) || empty($_GET['id'])) {
+  echo '<script>window.location.href = "admin_404.php"</script>';
+  exit();
+}
+
+$manu_id = mysqli_real_escape_string($mysqli, $_GET['id']);
+
+$check_query = "SELECT * FROM manufacturer WHERE id = '$manu_id'";
+$check_result = mysqli_query($mysqli, $check_query);
+
+if (mysqli_num_rows($check_result) === 0) {
+  echo '<script>window.location.href = "admin_404.php"</script>';
+  exit();
+}
+
+$SQL = "SELECT * FROM manufacturer WHERE id = '$manu_id'";
+$query_manu = mysqli_query($mysqli, $SQL);
 ?>
 <div class="dashboard-products">
   <h2 class="text-dark11 text-3xl font-bold uppercase">
@@ -12,7 +27,7 @@ $query_cate = mysqli_query($mysqli, $SQL);
   </h2>
   <form id="form-manufacturer-update" action="modules/manufacturers/process_manu_update.php" method="post" enctype="multipart/form-data">
     <?php
-    while ($row = mysqli_fetch_array($query_cate)) {
+    while ($row = mysqli_fetch_array($query_manu)) {
     ?>
       <div class="mt-5">
         <input type="hidden" name="manu_id" value="<?php echo $row['id'] ?>" class="hidden" readonly />
