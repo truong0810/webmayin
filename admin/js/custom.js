@@ -135,6 +135,50 @@ $(document).ready(function () {
   });
 });
 
+// ==================DELETE USERS==========
+$(document).ready(function () {
+  $('.delete_user_button').click(function (e) {
+    console.log('Delete user');
+    e.preventDefault();
+    var id = $(this).val();
+    console.log('id', id);
+    swal({
+      title: 'Xác nhận xoá người dùng',
+      text: 'Bạn có chắc muốn người dùng này?',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        $.ajax({
+          method: 'POST',
+          url: 'modules/users/process_user_delete.php',
+          data: {
+            id,
+            delete_user_button: true,
+          },
+          success: function (res) {
+            if (res == 200) {
+              swal({
+                title: 'Success!',
+                text: 'User deleted successfully!',
+                icon: 'success',
+              });
+              $('#user_table').load(location.href + ' #user_table');
+            } else if (res == 500) {
+              swal({
+                title: 'Error!',
+                text: 'Something went wrong!',
+                icon: 'error',
+              });
+            }
+          },
+        });
+      }
+    });
+  });
+});
+
 // IMAGE MANUFACTURERS ADD
 const fileInput = document.getElementById('dropzone-file');
 const selectedImage = document.getElementById('selected-image');

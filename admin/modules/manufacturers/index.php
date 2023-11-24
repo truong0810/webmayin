@@ -105,7 +105,6 @@ $query_manu = mysqli_query($mysqli, $SQL);
       <?php
       for ($i = 1; $i <= $so_trang; $i++) {
       ?>
-        <!-- <a href="#" class="pagi-active inline-block text-black font-medium">1</a> -->
         <a href="index.php?action=quanlyhangsanxuat&page=<?php echo $i ?>&search=<?php echo $search ?>" class="inline-block text-black font-medium <?php echo $page == $i ? 'pagi-active' : '' ?>">
           <?php echo $i ?>
         </a>

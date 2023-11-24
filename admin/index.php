@@ -79,7 +79,15 @@ require_once("config/config.php");
                      require_once("modules/orders/index.php");
                   }
                } else if ($tam == 'quanlykhachhang') {
-                  require_once("modules/users/index.php");
+                  if ($process == 'add') {
+                     require_once("modules/users/user_add.php");
+                  } else if ($process == 'update') {
+                     require_once("modules/users/user_update.php");
+                  } else if ($process == 'details') {
+                     require_once("modules/users/user_details.php");
+                  } else {
+                     require_once("modules/users/index.php");
+                  }
                } else {
                ?>
                   <div class="dashboard-main dashboard-main-container text-center flex items-center justify-center h-full w-full">
