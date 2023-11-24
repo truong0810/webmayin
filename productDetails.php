@@ -55,11 +55,7 @@ $next_page = $page + 1;
                            Trang chủ
                         </a>
                         <span>/</span>
-                        <a href="#">Máy in tổng hợp</a>
-                        <span>/</span>
-                        <a href="#">Máy in đa năng</a>
-                        <span>/</span>
-                        <a href="#" class="text-sm text-primary font-bold">Máy in màu đa năng</a>
+                        <a href="#" class="text-sm text-primary font-bold">Máy in tổng hợp</a>
                      </div>
                      <div class="flex items-center justify-center gap-1">
                         <label for="product_filter" class="block text-sm font-medium text-gray-900 ">Sắp xếp theo:</label>
@@ -73,7 +69,7 @@ $next_page = $page + 1;
                   <div class="flex items-center justify-between">
                      <div class="flex items-center justify-center gap-2 mt-10">
                         <h3 class="text-black text-2xl font-bold uppercase">
-                           Máy in màu đa năng
+                           Máy in tổng hợp
                         </h3>
                         <p class="text-sm font-medium">(Tổng <span class="font-semibold text-primary text-base"><?= $so_product ?></span> sản phẩm)</p>
                      </div>
