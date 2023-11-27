@@ -24,6 +24,10 @@ if (isset($_POST['user_signup'])) {
     $errors = true;
   }
 
+  if (empty($password)) {
+    $_SESSION['error_password'] = "Trường này không được để trống";
+    $errors = true;
+  }
   // Kiểm tra mật khẩu không trùng khớp
   if ($password !== $confirmPassword) {
     $_SESSION['error_confirmPassword'] = "Passwords do not match.";
