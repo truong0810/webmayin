@@ -10,7 +10,7 @@ $query_khuyenmai = mysqli_query($mysqli, $sql_khuyenmai);
          <?php while ($row = mysqli_fetch_array($query_khuyenmai)) { ?>
             <div class="product-item border w-[232px] border-graydb rounded-lg">
                <a href="details.php?id=<?= $row['id'] ?>" class="flex items-center justify-center text-center p-[15px_10px_20px_10px]">
-                  <img srcset="admin/modules/products/store/<?= $row['thumbnail'] ?> 2x" class="w-full max-w-[85%] h-full object-cover hover:scale-110 transition-all" />
+                  <img srcset="admin/modules/products/store/<?= $row['thumbnail'] ?> 2x" class="w-[178px] h-[178px] object-cover hover:scale-110 transition-all" />
                </a>
                <p class="product-status bg-primary text-center uppercase text-white text-sm font-semibold p-2">
                   Còn hàng

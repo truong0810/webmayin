@@ -89,14 +89,14 @@ $next_page = $page + 1;
                   <?php foreach ($result as $each) : ?>
                      <div class="px-[9px]">
                         <div class="product-item border w-[269px] border-graydb rounded-lg">
-                           <a class="flex items-center justify-center text-center p-[15px_10px_20px_10px]">
-                              <img srcset="admin/modules/products/store/<?= $each['thumbnail'] ?> 2x" class="w-full max-w-[85%] h-full object-cover hover:scale-110 transition-all" />
+                           <a href="details.php?id=<?= $each['id'] ?>" class="flex items-center justify-center text-center p-[15px_10px_20px_10px]">
+                              <img srcset="admin/modules/products/store/<?= $each['thumbnail'] ?> 2x" class="w-[210px] h-[210px] object-cover hover:scale-110 transition-all" />
                            </a>
                            <p class="product-status bg-primary text-center uppercase text-white text-sm font-semibold p-2">
                               Còn hàng
                            </p>
                            <div class="mt-5 px-1 text-center">
-                              <a class="hidden-text text-lg font-semibold hover:text-primary transition-all">
+                              <a href="details.php?id=<?= $each['id'] ?>" class="hidden-text text-lg font-semibold hover:text-primary transition-all">
                                  <?= $each['title'] ?>
                               </a>
                               <p class="text-gray82 font-medium line-through text-lg mt-3">

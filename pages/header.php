@@ -57,7 +57,7 @@ $active = isset($_GET['about']) ? $_GET['about'] : '';
                   </a>
                <?php } else { ?>
                   <div class="dashboard-user relative w-[32px] h-[32px] cursor-pointer">
-                     <img src="<?= $_SESSION['avatar_user'] ?>" alt="Users" class="w-full h-full rounded-full" />
+                     <img src="./admin/modules/users/uploads/<?= $_SESSION['avatar_user'] ?>" alt="Users" class="w-full h-full rounded-full" />
                      <div class="dashboard-user-setting absolute right-0 top-0 translate-y-8 bg-white shadow-md rounded-lg overflow-hidden hidden-sub z-[999999]">
                         <div class="border-b-2 border-gray-300 p-3">
                            <p class="text-[#111827] capitalize hidden-text-oneline">

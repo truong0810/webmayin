@@ -1,3 +1,3 @@
 <?php
 // Trong config.php
-define('BASE_URL', '/Laptrinhweb\/Web_Printer/');
+define('BASE_URL', '/Web_Printer/');

@@ -58,7 +58,7 @@ if (isset($_POST['user_signup'])) {
   // $_SESSION['avatar_user'] = $each['avatar'];
   // $_SESSION['email_user'] = $each['email'];
   // Điều hướng về trang signup.php sau khi đăng ký thành công
-  header("Location: signup.php");
+  header("Location: signin.php");
   exit();
 }
 mysqli_close($mysqli);
